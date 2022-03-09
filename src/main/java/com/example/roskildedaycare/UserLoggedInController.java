@@ -10,8 +10,7 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoggedInController implements Initializable {
-
+public class UserLoggedInController implements Initializable {
     @FXML
     private Label welcomeLbl;
     @FXML
@@ -28,6 +27,6 @@ public class LoggedInController implements Initializable {
     }
 
     public void setUserInformation(String lastName, String firstName) {
-        welcomeLbl.setText("Welcome Admin: " + lastName + " " + firstName + "! to the Database");
+        welcomeLbl.setText("Welcome User: " + lastName + " " + firstName + "! to the Database");
     }
 }

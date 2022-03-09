@@ -28,8 +28,8 @@ public class UserSystem {
             try {
                 FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource(fxmlFile));
                 root = loader.load();
-                LoggedInController loggedInController = loader.getController();
-                loggedInController.setUserInformation(lastName, firstName);
+                UserLoggedInController userloggedInController = loader.getController();
+                userloggedInController.setUserInformation(lastName, firstName);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -64,7 +64,7 @@ public class UserSystem {
                     String retrievedPassword = rs.getString("password");
 
                     if (retrievedPassword.equals(password)) {
-                        changeScene(event, "logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
+                        changeScene(event, "user-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
                     } else {
                         System.out.println("Incorrect password");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
