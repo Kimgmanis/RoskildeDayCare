@@ -49,7 +49,7 @@ public class UserSystem {
     public static void loginUser(ActionEvent event, String userName, String password) {
         try {
             connection();
-            ps = connect.prepareStatement("SELECT password, firstName, lastName FROM roskilde_daycare.user WHERE userName = ?;");
+            ps = connect.prepareStatement("SELECT password, firstName, lastName, admin FROM roskilde_daycare.user WHERE userName = ?;");
             ps.setString(1, userName);
             rs = ps.executeQuery();
 
@@ -57,7 +57,8 @@ public class UserSystem {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found");
                 alert.show();
-            } else {
+            }
+            else {
                 while (rs.next()) {
                     String retrievedFirstName = rs.getString("firstName");
                     String retrievedLastName = rs.getString("lastName");
