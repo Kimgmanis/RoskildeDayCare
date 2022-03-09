@@ -24,12 +24,37 @@ public class UserSystem {
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
         Parent root = null;
 
-        if (firstName != null && lastName != null) {
+            if (firstName != null && lastName != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource(fxmlFile));
                 root = loader.load();
                 UserLoggedInController userloggedInController = loader.getController();
                 userloggedInController.setUserInformation(lastName, firstName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                root = FXMLLoader.load(UserSystem.class.getResource(fxmlFile));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle(title);
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
+
+    public static void adminChangeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
+        Parent root = null;
+
+        if (firstName != null && lastName != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource(fxmlFile));
+                root = loader.load();
+                LoggedInController loggedInController = loader.getController();
+                loggedInController.setUserInformation(lastName, firstName);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -63,8 +88,11 @@ public class UserSystem {
                     String retrievedFirstName = rs.getString("firstName");
                     String retrievedLastName = rs.getString("lastName");
                     String retrievedPassword = rs.getString("password");
+                    boolean retrievedAdmin = rs.getBoolean("admin");
 
-                    if (retrievedPassword.equals(password)) {
+                    if (retrievedPassword.equals(password) && retrievedAdmin) {
+                        adminChangeScene(event, "logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
+                    } else if (retrievedPassword.equals(password)) {
                         changeScene(event, "user-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
                     } else {
                         System.out.println("Incorrect password");
