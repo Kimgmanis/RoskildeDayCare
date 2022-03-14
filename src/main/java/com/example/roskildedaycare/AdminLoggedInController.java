@@ -16,6 +16,14 @@ public class AdminLoggedInController implements Initializable {
     private Label welcomeLbl;
     @FXML
     private Button logoutBtn;
+    @FXML
+    private Button scheduleBtn;
+    @FXML
+    private Button childrenBtn;
+    @FXML
+    private Button parentsBtn;
+    @FXML
+    private Button managementBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
