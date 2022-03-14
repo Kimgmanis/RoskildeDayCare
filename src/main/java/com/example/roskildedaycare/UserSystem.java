@@ -65,26 +65,26 @@ public class UserSystem {
 
     }
 
-    /*public static UserInfo getUserInfo(String inSystemID)
+    public static UserInfo getUserInfo(String inSystemID)
     {
         connection();
         UserInfo userInfo = new UserInfo();
         try {
-            ps = connect.prepareStatement("SELECT password, firstName, lastName, admin, ID FROM roskilde_daycare.user WHERE ID = ?");
+            ps = connect.prepareStatement("SELECT password, firstName, lastName, admin, telephoneNumber FROM roskilde_daycare.user WHERE ID = ?");
             ps.setString(1, inSystemID);
             rs = ps.executeQuery();
             if (!rs.isBeforeFirst()) {
                 System.out.println("User not found");
-                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getUserInfo");
                 alert.show();
             }
             else {
                 while (rs.next()) {
-                    String retrievedFirstName = rs.getString("firstName");
-                    String retrievedLastName = rs.getString("lastName");
-                    String retrievedPassword = rs.getString("password");
-                    boolean retrievedAdmin = rs.getBoolean("admin");
-                    int retrievedID = rs.getInt("ID");
+                    userInfo.setName(rs.getString("firstName"));
+                    userInfo.setLastName(rs.getString("lastName"));
+                    userInfo.setPassword(rs.getString("password"));
+                    userInfo.setAdmin(rs.getBoolean("admin"));
+                    userInfo.setNumber(rs.getString("telephoneNumber"));
 
                 }
             }
@@ -93,8 +93,8 @@ public class UserSystem {
         } finally {
             closeConnection();
         }
-
-    }*/
+        return userInfo;
+    }
 
     public static void adminChangeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
         Parent root = null;
@@ -139,7 +139,7 @@ public class UserSystem {
                     String retrievedLastName = rs.getString("lastName");
                     String retrievedPassword = rs.getString("password");
                     boolean retrievedAdmin = rs.getBoolean("admin");
-                    int retrievedID = rs.getInt("ID");
+                    UserInfo.setUsingSystemID(rs.getString("ID"));
 
                     if (retrievedPassword.equals(password) && retrievedAdmin) {
                         //adminChangeScene(event, "admin-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);

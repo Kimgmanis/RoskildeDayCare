@@ -17,11 +17,11 @@ public class UserInfo {
         this.lastName = lastName;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
@@ -51,10 +51,20 @@ public class UserInfo {
 
     private String name;
     private String lastName;
-    private int number;
+    private String number;
     private String username;
     private String password;
     private boolean admin;
+
+    public static String getUsingSystemID() {
+        return usingSystemID;
+    }
+
+    public static void setUsingSystemID(String usingSystemID) {
+        UserInfo.usingSystemID = usingSystemID;
+    }
+
+    public static String usingSystemID;
 
 
 }
