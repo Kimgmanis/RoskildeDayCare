@@ -22,7 +22,7 @@ public class AddNewUserController implements Initializable {
         returnBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserSystem.changeScene(event, "user-management.fxml", "Log in", null, null);
+                UserSystem.changeScene(event, "user-management.fxml", "User management", null, null);
             }
         });
     }

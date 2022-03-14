@@ -30,7 +30,7 @@ public class UserManagementController implements Initializable {
         returnBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserSystem.changeScene(event, "admin-logged-in.fxml", " ", null, null);
+                UserSystem.changeScene(event, "admin-logged-in.fxml", "Main Menu", null, null);
             }
         });
         addnewuserBtn.setOnAction(new EventHandler<ActionEvent>() {
