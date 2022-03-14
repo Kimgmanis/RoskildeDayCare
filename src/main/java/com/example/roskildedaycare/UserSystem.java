@@ -93,7 +93,7 @@ public class UserSystem {
                     if (retrievedPassword.equals(password) && retrievedAdmin) {
                         adminChangeScene(event, "admin-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
                     } else if (retrievedPassword.equals(password)) {
-                        changeScene(event, "user-admin-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
+                        changeScene(event, "user-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
                     } else {
                         System.out.println("Incorrect password");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
