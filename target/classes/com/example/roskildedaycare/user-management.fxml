@@ -11,7 +11,7 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="624.0">
          <children>
-            <Label fx:id="welcomeLbl" layoutY="43.0" prefHeight="27.0" prefWidth="600.0" text="Welcome to the user management system" textAlignment="CENTER">
+            <Label fx:id="titleLbl" layoutY="43.0" prefHeight="27.0" prefWidth="600.0" text="Welcome to the user management system" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
