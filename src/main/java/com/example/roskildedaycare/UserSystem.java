@@ -20,6 +20,7 @@ public class UserSystem {
     private static String url = System.getenv("url");
     private static String user = System.getenv("user");
     private static String password = System.getenv("password");
+    public static String inSystemID;
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
         Parent root = null;
@@ -45,6 +46,55 @@ public class UserSystem {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
+
+    public static void changeSceneNew(ActionEvent event, String fxmlFile, String title)
+    {
+        Parent root = null;
+        try{
+            FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource(fxmlFile));
+            root = loader.load();
+
+        } catch (IOException e){
+            e.printStackTrace();
+            System.out.println("Couldn't change scene");
+        }
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle(title);
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+
+    }
+
+    /*public static UserInfo getUserInfo(String inSystemID)
+    {
+        connection();
+        UserInfo userInfo = new UserInfo();
+        try {
+            ps = connect.prepareStatement("SELECT password, firstName, lastName, admin, ID FROM roskilde_daycare.user WHERE ID = ?");
+            ps.setString(1, inSystemID);
+            rs = ps.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found");
+                alert.show();
+            }
+            else {
+                while (rs.next()) {
+                    String retrievedFirstName = rs.getString("firstName");
+                    String retrievedLastName = rs.getString("lastName");
+                    String retrievedPassword = rs.getString("password");
+                    boolean retrievedAdmin = rs.getBoolean("admin");
+                    int retrievedID = rs.getInt("ID");
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+    }*/
 
     public static void adminChangeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
         Parent root = null;
@@ -74,7 +124,7 @@ public class UserSystem {
     public static void loginUser(ActionEvent event, String userName, String password) {
         try {
             connection();
-            ps = connect.prepareStatement("SELECT password, firstName, lastName, admin FROM roskilde_daycare.user WHERE userName = ?;");
+            ps = connect.prepareStatement("SELECT password, firstName, lastName, admin, ID FROM roskilde_daycare.user WHERE userName = ?;");
             ps.setString(1, userName);
             rs = ps.executeQuery();
 
@@ -89,9 +139,11 @@ public class UserSystem {
                     String retrievedLastName = rs.getString("lastName");
                     String retrievedPassword = rs.getString("password");
                     boolean retrievedAdmin = rs.getBoolean("admin");
+                    int retrievedID = rs.getInt("ID");
 
                     if (retrievedPassword.equals(password) && retrievedAdmin) {
-                        adminChangeScene(event, "admin-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
+                        //adminChangeScene(event, "admin-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
+                        changeSceneNew(event,"admin-logged-in.fxml","Admin menu");
                     } else if (retrievedPassword.equals(password)) {
                         changeScene(event, "user-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
                     } else {
