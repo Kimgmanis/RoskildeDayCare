@@ -39,5 +39,11 @@ public class AddNewUserController implements Initializable {
                 UserSystem.changeScene(event, "user-management.fxml", "User management", null, null);
             }
         });
+        createuserBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+            }
+        });
     }
 }
