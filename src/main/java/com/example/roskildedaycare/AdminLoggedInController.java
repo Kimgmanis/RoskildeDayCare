@@ -39,7 +39,15 @@ public class AdminLoggedInController implements Initializable {
                 UserSystem.changeScene(event, "user-management.fxml", "User management", null, null);
             }
         });
+
+        parentsBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.changeScene(event, "parents.fxml", "Parents", null, null);
+            }
+        });
     }
+
 
     public void setUserInformation(String lastName, String firstName) {
         welcomeLbl.setText("Welcome Admin: " + lastName + " " + firstName + "! to the Database");
