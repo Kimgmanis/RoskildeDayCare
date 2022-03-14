@@ -53,8 +53,8 @@ public class UserSystem {
             try {
                 FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource(fxmlFile));
                 root = loader.load();
-                LoggedInController loggedInController = loader.getController();
-                loggedInController.setUserInformation(lastName, firstName);
+                AdminLoggedInController adminLoggedInController = loader.getController();
+                adminLoggedInController.setUserInformation(lastName, firstName);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -91,9 +91,9 @@ public class UserSystem {
                     boolean retrievedAdmin = rs.getBoolean("admin");
 
                     if (retrievedPassword.equals(password) && retrievedAdmin) {
-                        adminChangeScene(event, "logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
+                        adminChangeScene(event, "admin-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
                     } else if (retrievedPassword.equals(password)) {
-                        changeScene(event, "user-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
+                        changeScene(event, "user-admin-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
                     } else {
                         System.out.println("Incorrect password");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
