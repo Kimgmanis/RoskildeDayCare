@@ -1,0 +1,1 @@
+ALTER TABLE parents AUTO_INCREMENT = 1;

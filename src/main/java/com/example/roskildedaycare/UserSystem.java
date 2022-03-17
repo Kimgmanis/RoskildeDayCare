@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class UserSystem {
     private static PreparedStatement ps = null;
@@ -20,7 +22,6 @@ public class UserSystem {
     private static String url = System.getenv("url");
     private static String user = System.getenv("user");
     private static String password = System.getenv("password");
-    public static String inSystemID;
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
         Parent root = null;
@@ -64,11 +65,63 @@ public class UserSystem {
         stage.show();
 
     }
+    public static String getParentsMaxID()
+    {
+        String maxID = new String();
+        connection();
+        try {
+            ps = connect.prepareStatement("SELECT COUNT(*) FROM roskilde_daycare.parents");
+            rs = ps.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getParentsMaxID");
+                alert.show();
+            }
+            else {
+                while (rs.next()) {
+                    maxID = rs.getString("COUNT(*)");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return maxID;
+    }
+    public static ParentInfo getParentInfo(String parentID)
+    {
+        ParentInfo temporaryParent = new ParentInfo();
+        connection();
+        try {
+            ps = connect.prepareStatement("SELECT firstName, lastName, telephoneNumber, students_id FROM roskilde_daycare.parents WHERE ID = ?");
+            ps.setString(1, parentID);
+            rs = ps.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getParentInfo");
+                alert.show();
+            }
+            else {
+                while (rs.next()) {
+                    temporaryParent.setName(rs.getString("firstName"));
+                    temporaryParent.setSurname(rs.getString("lastName"));
+                    temporaryParent.setNumber(rs.getString("telephoneNumber"));
+                    temporaryParent.setKidsID(rs.getString("students_id"));
 
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return temporaryParent;
+    }
     public static UserInfo getUserInfo(String inSystemID)
     {
         connection();
-        UserInfo userInfo = new UserInfo();
+        UserInfo temporaryUser = new UserInfo();
         try {
             ps = connect.prepareStatement("SELECT password, firstName, lastName, admin, telephoneNumber FROM roskilde_daycare.user WHERE ID = ?");
             ps.setString(1, inSystemID);
@@ -80,11 +133,11 @@ public class UserSystem {
             }
             else {
                 while (rs.next()) {
-                    userInfo.setName(rs.getString("firstName"));
-                    userInfo.setLastName(rs.getString("lastName"));
-                    userInfo.setPassword(rs.getString("password"));
-                    userInfo.setAdmin(rs.getBoolean("admin"));
-                    userInfo.setNumber(rs.getString("telephoneNumber"));
+                    temporaryUser.setName(rs.getString("firstName"));
+                    temporaryUser.setLastName(rs.getString("lastName"));
+                    temporaryUser.setPassword(rs.getString("password"));
+                    temporaryUser.setAdmin(rs.getBoolean("admin"));
+                    temporaryUser.setNumber(rs.getString("telephoneNumber"));
 
                 }
             }
@@ -93,9 +146,17 @@ public class UserSystem {
         } finally {
             closeConnection();
         }
-        return userInfo;
+        return temporaryUser;
     }
-
+    public static String doubleToString(double num)
+    {
+        NumberFormat nf = DecimalFormat.getInstance();
+        nf.setMaximumFractionDigits(0);
+        String str = nf.format(num);
+        return str;
+    }
+    //Old change admin scene
+/*
     public static void adminChangeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
         Parent root = null;
 
@@ -104,7 +165,8 @@ public class UserSystem {
                 FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource(fxmlFile));
                 root = loader.load();
                 AdminLoggedInController adminLoggedInController = loader.getController();
-                adminLoggedInController.setUserInformation(lastName, firstName);
+                //moved setUserInformation
+                //adminLoggedInController.setUserInformation(lastName, firstName);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -119,7 +181,7 @@ public class UserSystem {
         stage.setTitle(title);
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
-    }
+    }*/
 
     public static void loginUser(ActionEvent event, String userName, String password) {
         try {
