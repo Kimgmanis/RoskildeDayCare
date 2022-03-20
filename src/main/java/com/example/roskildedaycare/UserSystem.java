@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class UserSystem {
     private static PreparedStatement ps = null;
@@ -20,7 +22,6 @@ public class UserSystem {
     private static String url = System.getenv("url");
     private static String user = System.getenv("user");
     private static String password = System.getenv("password");
-    public static String inSystemID;
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
         Parent root = null;
@@ -64,27 +65,49 @@ public class UserSystem {
         stage.show();
 
     }
-
-    /*public static UserInfo getUserInfo(String inSystemID)
+    public static String getParentsMaxID()
     {
+        String maxID = new String();
         connection();
-        UserInfo userInfo = new UserInfo();
         try {
-            ps = connect.prepareStatement("SELECT password, firstName, lastName, admin, ID FROM roskilde_daycare.user WHERE ID = ?");
-            ps.setString(1, inSystemID);
+            ps = connect.prepareStatement("SELECT COUNT(*) FROM roskilde_daycare.parents");
             rs = ps.executeQuery();
             if (!rs.isBeforeFirst()) {
                 System.out.println("User not found");
-                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getParentsMaxID");
                 alert.show();
             }
             else {
                 while (rs.next()) {
-                    String retrievedFirstName = rs.getString("firstName");
-                    String retrievedLastName = rs.getString("lastName");
-                    String retrievedPassword = rs.getString("password");
-                    boolean retrievedAdmin = rs.getBoolean("admin");
-                    int retrievedID = rs.getInt("ID");
+                    maxID = rs.getString("COUNT(*)");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return maxID;
+    }
+    public static ParentInfo getParentInfo(String parentID)
+    {
+        ParentInfo temporaryParent = new ParentInfo();
+        connection();
+        try {
+            ps = connect.prepareStatement("SELECT firstName, lastName, telephoneNumber, students_id FROM roskilde_daycare.parents WHERE ID = ?");
+            ps.setString(1, parentID);
+            rs = ps.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getParentInfo");
+                alert.show();
+            }
+            else {
+                while (rs.next()) {
+                    temporaryParent.setName(rs.getString("firstName"));
+                    temporaryParent.setSurname(rs.getString("lastName"));
+                    temporaryParent.setNumber(rs.getString("telephoneNumber"));
+                    temporaryParent.setKidsID(rs.getString("students_id"));
 
                 }
             }
@@ -93,9 +116,47 @@ public class UserSystem {
         } finally {
             closeConnection();
         }
+        return temporaryParent;
+    }
+    public static UserInfo getUserInfo(String inSystemID)
+    {
+        connection();
+        UserInfo temporaryUser = new UserInfo();
+        try {
+            ps = connect.prepareStatement("SELECT password, firstName, lastName, admin, telephoneNumber FROM roskilde_daycare.user WHERE ID = ?");
+            ps.setString(1, inSystemID);
+            rs = ps.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getUserInfo");
+                alert.show();
+            }
+            else {
+                while (rs.next()) {
+                    temporaryUser.setName(rs.getString("firstName"));
+                    temporaryUser.setLastName(rs.getString("lastName"));
+                    temporaryUser.setPassword(rs.getString("password"));
+                    temporaryUser.setAdmin(rs.getBoolean("admin"));
+                    temporaryUser.setNumber(rs.getString("telephoneNumber"));
 
-    }*/
-
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return temporaryUser;
+    }
+    public static String doubleToString(double num)
+    {
+        NumberFormat nf = DecimalFormat.getInstance();
+        nf.setMaximumFractionDigits(0);
+        String str = nf.format(num);
+        return str;
+    }
+    //Old change admin scene
+/*
     public static void adminChangeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
         Parent root = null;
 
@@ -104,7 +165,8 @@ public class UserSystem {
                 FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource(fxmlFile));
                 root = loader.load();
                 AdminLoggedInController adminLoggedInController = loader.getController();
-                adminLoggedInController.setUserInformation(lastName, firstName);
+                //moved setUserInformation
+                //adminLoggedInController.setUserInformation(lastName, firstName);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -119,7 +181,7 @@ public class UserSystem {
         stage.setTitle(title);
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
-    }
+    }*/
 
     public static void loginUser(ActionEvent event, String userName, String password) {
         try {
@@ -139,7 +201,7 @@ public class UserSystem {
                     String retrievedLastName = rs.getString("lastName");
                     String retrievedPassword = rs.getString("password");
                     boolean retrievedAdmin = rs.getBoolean("admin");
-                    int retrievedID = rs.getInt("ID");
+                    UserInfo.setUsingSystemID(rs.getString("ID"));
 
                     if (retrievedPassword.equals(password) && retrievedAdmin) {
                         //adminChangeScene(event, "admin-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);

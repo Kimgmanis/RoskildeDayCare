@@ -27,6 +27,10 @@ public class AdminLoggedInController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        UserInfo temporary = UserSystem.getUserInfo(UserInfo.usingSystemID);
+        welcomeLbl.setText("Welcome Admin: " + temporary.getName() + " " + temporary.getLastName() + "! to the Database");
+
         logoutBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -39,17 +43,11 @@ public class AdminLoggedInController implements Initializable {
                 UserSystem.changeScene(event, "user-management.fxml", "User management", null, null);
             }
         });
-
         parentsBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserSystem.changeScene(event, "parents.fxml", "Parents", null, null);
+                UserSystem.changeSceneNew(event, "parents.fxml", "Parents");
             }
         });
-    }
-
-
-    public void setUserInformation(String lastName, String firstName) {
-        welcomeLbl.setText("Welcome Admin: " + lastName + " " + firstName + "! to the Database");
     }
 }

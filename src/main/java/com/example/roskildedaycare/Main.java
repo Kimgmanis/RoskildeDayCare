@@ -21,3 +21,5 @@ public class Main extends Application {
         launch();
     }
 }
+
+//TODO extra Parents list eror if less than 8 parents are in DB
