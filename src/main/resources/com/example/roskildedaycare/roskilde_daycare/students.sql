@@ -4,6 +4,6 @@ create table students
 		primary key,
 	firstName varchar(32) null,
 	lastName varchar(32) null,
-	dob date null
+	studentGroup varchar (32)
 );
 

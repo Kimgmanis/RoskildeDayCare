@@ -21,7 +21,7 @@ public class UserLoggedInController implements Initializable {
         logoutBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserSystem.changeScene(event, "main.fxml", "Log in", null, null);
+                UserSystem.changeSceneNew(event, "main.fxml", "Log in");
             }
         });
     }

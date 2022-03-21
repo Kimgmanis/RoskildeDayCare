@@ -23,7 +23,7 @@ public class UserSystem {
     private static String user = System.getenv("user");
     private static String password = System.getenv("password");
 
-    public static void changeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
+   /* public static void changeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
         Parent root = null;
 
             if (firstName != null && lastName != null) {
@@ -46,7 +46,7 @@ public class UserSystem {
         stage.setTitle(title);
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
-    }
+    }*/
 
     public static void changeSceneNew(ActionEvent event, String fxmlFile, String title)
     {
@@ -269,33 +269,6 @@ public class UserSystem {
         String str = nf.format(num);
         return str;
     }
-    //Old change admin scene
-/*
-    public static void adminChangeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
-        Parent root = null;
-
-        if (firstName != null && lastName != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource(fxmlFile));
-                root = loader.load();
-                AdminLoggedInController adminLoggedInController = loader.getController();
-                //moved setUserInformation
-                //adminLoggedInController.setUserInformation(lastName, firstName);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                root = FXMLLoader.load(UserSystem.class.getResource(fxmlFile));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle(title);
-        stage.setScene(new Scene(root, 600, 400));
-        stage.show();
-    }*/
 
     public static void loginUser(ActionEvent event, String userName, String password) {
         try {
@@ -321,7 +294,7 @@ public class UserSystem {
                         //adminChangeScene(event, "admin-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
                         changeSceneNew(event,"admin-logged-in.fxml","Admin menu");
                     } else if (retrievedPassword.equals(password)) {
-                        changeScene(event, "user-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
+                        changeSceneNew(event, "user-logged-in.fxml", "Welcome!");
                     } else {
                         System.out.println("Incorrect password");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
