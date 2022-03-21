@@ -1,12 +1,6 @@
 package com.example.roskildedaycare;
 
 public class UserInfo {
-    private String firstName;
-    private String lastName;
-    private int telephoneNumber;
-    private String userName;
-    private String password;
-    private boolean admin;
 
     public UserInfo(String firstName, String lastName, int telephoneNumber, String username, String password, boolean admin) {
         setFirstName(firstName);
@@ -17,6 +11,15 @@ public class UserInfo {
         setAdmin(admin);
     }
 
+    private String firstName;
+    private String lastName;
+    private int telephoneNumber;
+    private String userName;
+    private String password;
+    private boolean admin;
+
+
+
     public UserInfo(String firstName, String lastName, int telephoneNumber, String userName, boolean admin) {
         setFirstName(firstName);
         setLastName(lastName);
@@ -25,9 +28,6 @@ public class UserInfo {
         setAdmin(admin);
     }
 
-    public UserInfo() {
-
-    }
 
     public String getFirstName() {
         return firstName;

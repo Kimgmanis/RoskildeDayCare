@@ -150,55 +150,44 @@ public class ScheduleController implements Initializable{
         surnameTxt8.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getTeacher());
 
         numberTxt1.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
-        numberTxt2.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
-        numberTxt3.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
-        numberTxt4.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
-        numberTxt5.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
-        numberTxt6.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
-        numberTxt7.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
-        numberTxt8.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
+        numberTxt2.setText(UserSystem.getSchedule((int)(upDownScroll.getValue())).getTeacher());
+        numberTxt3.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+1)).getTeacher());
+        numberTxt4.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+2)).getTeacher());
+        numberTxt5.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+3)).getTeacher());
+        numberTxt6.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+4)).getTeacher());
+        numberTxt7.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+5)).getTeacher());
+        numberTxt8.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getTeacher());
 
         // scrolls down when scroll bar being triggered
         upDownScroll.valueProperty().addListener(new ChangeListener<Number>()
         {
             public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
-                nameTxt1.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue())).getName());
-                nameTxt2.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+1)).getName());
-                nameTxt3.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+2)).getName());
-                nameTxt4.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+3)).getName());
-                nameTxt5.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+4)).getName());
-                nameTxt6.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+5)).getName());
-                nameTxt7.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+6)).getName());
-                nameTxt8.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+7)).getName());
+                nameTxt1.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getGroup());
+                nameTxt2.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue())).getGroup());
+                nameTxt3.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()+1)).getGroup());
+                nameTxt4.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()+2)).getGroup());
+                nameTxt5.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()+3)).getGroup());
+                nameTxt6.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()+4)).getGroup());
+                nameTxt7.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()+5)).getGroup());
+                nameTxt8.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getGroup());
 
-                surnameTxt1.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue())).getSurname());
-                surnameTxt2.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+1)).getSurname());
-                surnameTxt3.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+2)).getSurname());
-                surnameTxt4.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+3)).getSurname());
-                surnameTxt5.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+4)).getSurname());
-                surnameTxt6.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+5)).getSurname());
-                surnameTxt7.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+6)).getSurname());
-                surnameTxt8.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+7)).getSurname());
+                surnameTxt1.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
+                surnameTxt2.setText(UserSystem.getSchedule((int)(upDownScroll.getValue())).getTeacher());
+                surnameTxt3.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+1)).getTeacher());
+                surnameTxt4.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+2)).getTeacher());
+                surnameTxt5.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+3)).getTeacher());
+                surnameTxt6.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+4)).getTeacher());
+                surnameTxt7.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+5)).getTeacher());
+                surnameTxt8.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getTeacher());
 
-                numberTxt1.setText("        "+UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue())).getNumber());
-                numberTxt2.setText("        "+UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+1)).getNumber());
-                numberTxt3.setText("        "+UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+2)).getNumber());
-                numberTxt4.setText("        "+UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+3)).getNumber());
-                numberTxt5.setText("        "+UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+4)).getNumber());
-                numberTxt6.setText("        "+UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+5)).getNumber());
-                numberTxt7.setText("        "+UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+6)).getNumber());
-                numberTxt8.setText("        "+UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+7)).getNumber());
-
-                kidBtn1.setText(UserSystem.getKidInfo(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue())).getKidsID()).getName());
-                kidBtn2.setText(UserSystem.getKidInfo(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+1)).getKidsID()).getName());
-                kidBtn3.setText(UserSystem.getKidInfo(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+2)).getKidsID()).getName());
-                kidBtn4.setText(UserSystem.getKidInfo(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+3)).getKidsID()).getName());
-                kidBtn5.setText(UserSystem.getKidInfo(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+4)).getKidsID()).getName());
-                kidBtn6.setText(UserSystem.getKidInfo(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+5)).getKidsID()).getName());
-                kidBtn7.setText(UserSystem.getKidInfo(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+6)).getKidsID()).getName());
-                kidBtn8.setText(UserSystem.getKidInfo(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+7)).getKidsID()).getName());
-
-                //kidBtn1.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue())).getKidsID());
+                numberTxt1.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
+                numberTxt2.setText(UserSystem.getSchedule((int)(upDownScroll.getValue())).getTeacher());
+                numberTxt3.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+1)).getTeacher());
+                numberTxt4.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+2)).getTeacher());
+                numberTxt5.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+3)).getTeacher());
+                numberTxt6.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+4)).getTeacher());
+                numberTxt7.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+5)).getTeacher());
+                numberTxt8.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getTeacher());
             }
         });
     }
