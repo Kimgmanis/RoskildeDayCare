@@ -34,13 +34,13 @@ public class AdminLoggedInController implements Initializable {
         logoutBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserSystem.changeScene(event, "main.fxml", "Log in", null, null);
+                UserSystem.changeSceneNew(event, "main.fxml", "Log in");
             }
         });
         managementBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserSystem.changeScene(event, "user-management.fxml", "User management", null, null);
+                UserSystem.changeSceneNew(event, "user-management.fxml", "User management");
             }
         });
         parentsBtn.setOnAction(new EventHandler<ActionEvent>() {
