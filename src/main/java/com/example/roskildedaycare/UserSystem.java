@@ -23,31 +23,6 @@ public class UserSystem {
     private static String user = System.getenv("user");
     private static String password = System.getenv("password");
 
-   /* public static void changeScene(ActionEvent event, String fxmlFile, String title, String lastName, String firstName) {
-        Parent root = null;
-
-            if (firstName != null && lastName != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource(fxmlFile));
-                root = loader.load();
-                UserLoggedInController userloggedInController = loader.getController();
-                userloggedInController.setUserInformation(lastName, firstName);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                root = FXMLLoader.load(UserSystem.class.getResource(fxmlFile));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle(title);
-        stage.setScene(new Scene(root, 600, 400));
-        stage.show();
-    }*/
-
     public static void changeSceneNew(ActionEvent event, String fxmlFile, String title)
     {
         Parent root = null;
@@ -65,11 +40,53 @@ public class UserSystem {
         stage.show();
 
     }
+    public static void createSchedule(String group, String date, String teacher)
+    {
+        connection();
+        try {
+            ps = connect.prepareStatement("INSERT INTO roskilde_daycare.schedule (studentGroup, dateSchedule, teacher) VALUES (?,?,?)");
+            ps.setString(1, group);
+            ps.setString(2, date);
+            ps.setString(3, teacher);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("createSchedule");
+        } finally {
+            closeConnection();
+        }
+    }
+    public static String findParent(String kidID)
+    {
+        String parentID = null;
+        connection();
+        try {
+            ps = connect.prepareStatement("SELECT ID FROM roskilde_daycare.parents WHERE students_id = ?");
+            ps.setString(1, kidID);
+            rs = ps.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getKidInfo");
+                alert.show();
+            }
+            else {
+                while (rs.next()) {
+                    parentID = rs.getString("ID");
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return parentID;
+    }
     public static void addFamily( String nameP1,String nameP2,String nameKid,String surnameP1,String surnameP2,String surnameKid,String numberP1,String numberP2,String group)
     {
         String kidID = addKid(nameKid, surnameKid, group);
         addPrent(nameP1, surnameP1, numberP1, kidID);
-        if(!nameP2.equals(null)&&!surnameP2.equals(null)&&!numberP2.equals(null))
+        if(!nameP2.equals(null)&&!surnameP2.equals(null)&&!numberP2.equals(null)&&!nameP2.equals("")&&!surnameP2.equals("")&&!numberP2.equals(""))
         {
             addPrent(nameP2,surnameP2,numberP2,kidID);
         }
@@ -79,8 +96,6 @@ public class UserSystem {
         connection();
         try {
             ps = connect.prepareStatement("INSERT INTO roskilde_daycare.parents (firstName, lastName, telephoneNumber, students_id) VALUES (?,?,?,?)");
-            //TODO delete SOP
-            System.out.println(name+surname+number+kidID+ "<----- addParent name,surname, number, kidID");
             int numberInt = Integer.parseInt(number);
             int kidIDInt = Integer.parseInt(kidID);
             ps.setString(1, name);
@@ -99,8 +114,6 @@ public class UserSystem {
     {
         String kidID = null;
         connection();
-        //TODO delete SOP
-        System.out.println(name + surname + group+"<-------- addKid name,surname, group");
         try {
             ps = connect.prepareStatement("INSERT INTO roskilde_daycare.students (firstName, lastName, studentGroup) VALUES (?,?,?)");
             ps.setString(1, name);
@@ -110,14 +123,11 @@ public class UserSystem {
             ps = connect.prepareStatement("SELECT ID FROM roskilde_daycare.students ORDER BY ID DESC LIMIT 1;");
             rs = ps.executeQuery();
             if (!rs.next()) {
-                System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getParentInfo");
                 alert.show();
             }
             else {
                     kidID=rs.getString("ID");
-                    //TODO delete SOP
-                    System.out.println(kidID+"<-------kids ID");
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -63,6 +63,7 @@ public class AddFamilyController implements Initializable{
                 numberP2Txt.setText(null);
             }
         });
+
         //setting up choice btn
         String[] chosenGroup = new String[1];
         String groupValues[] = { "A", "B", "C" };
@@ -83,6 +84,9 @@ public class AddFamilyController implements Initializable{
                     UserSystem.addFamily(nameP1Txt.getText(),nameP2Txt.getText(),nameKidTxt.getText(),surnameP1Txt.getText(),surnameP2Txt.getText(),surnameKidTxt.getText(),numberP1Txt.getText(),numberP2Txt.getText(),chosenGroup[0]);
                     //TODO delete SOP
                     System.out.println(nameP1Txt.getText()+nameP2Txt.getText()+"<------ addFamilyController nameP1, nameP2");
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Family created successfully");
+                    alert.show();
                     nameP1Txt.setText(null);
                     nameP2Txt.setText(null);
                     nameKidTxt.setText(null);
@@ -91,8 +95,19 @@ public class AddFamilyController implements Initializable{
                     surnameKidTxt.setText(null);
                     numberP1Txt.setText(null);
                     numberP2Txt.setText(null);
+                    groupChoice.setValue(null);
                 }else{
-
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Not enough information provided");
+                    alert.show();
+                    nameP1Txt.setText(null);
+                    nameP2Txt.setText(null);
+                    nameKidTxt.setText(null);
+                    surnameP1Txt.setText(null);
+                    surnameP2Txt.setText(null);
+                    surnameKidTxt.setText(null);
+                    numberP1Txt.setText(null);
+                    numberP2Txt.setText(null);
+                    groupChoice.setValue(null);
                 }
             }
         });
