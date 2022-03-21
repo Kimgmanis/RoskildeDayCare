@@ -336,19 +336,17 @@ public class UserSystem {
         }
     }
 
-    public static void addNewUser(String firstName, String lastName, String telephoneNumber, String userName, String password) {
+    public static void addNewUser(String firstName, String lastName, String telephoneNumber, String userName, String password, boolean admin) {
         try {
             connection();
-            /*ps = connect.prepareStatement("INSERT INTO user (firstName, lastName, telephoneNumber, userName, password, admin) " +
-                    "VALUES ('"+firstName+"', '"+lastName+"', "+telephoneNumber+", '"+userName+"', '"+password+"', 0);");*/
-            ps = connect.prepareStatement("INSERT INTO user (firstName, lastName, telephoneNumber, userName, password) " +
-                    "VALUES (?, ?, ?, ?, ?);");
+            ps = connect.prepareStatement("INSERT INTO user (firstName, lastName, telephoneNumber, userName, password, admin) " +
+                    "VALUES (?, ?, ?, ?, ?, ?);");
             ps.setString(1, firstName);
             ps.setString(2, lastName);
             ps.setString(3, telephoneNumber);
             ps.setString(4, userName);
             ps.setString(5, password);
-            // ps.setString(6, admin);
+            ps.setBoolean(6, admin);
             if (firstName + lastName + telephoneNumber + userName + password != null) {
                 ps.executeUpdate();
                 System.out.println("");
