@@ -1,11 +1,14 @@
 package com.example.roskildedaycare;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -251,7 +254,7 @@ public class UserSystem {
                     temporaryUser.setLastName(rs.getString("lastName"));
                     temporaryUser.setPassword(rs.getString("password"));
                     temporaryUser.setAdmin(rs.getBoolean("admin"));
-                    temporaryUser.setNumber(rs.getString("telephoneNumber"));
+                    temporaryUser.setNumber(rs.getInt("telephoneNumber"));
 
                 }
             }
@@ -335,6 +338,43 @@ public class UserSystem {
         } finally {
             closeConnection();
         }
+    }
+    /*public ObservableList<UserInfo> getUser() {
+        ObservableList<UserInfo> userList = FXCollections.observableArrayList();
+        try {
+            connection();
+            ps = connect.prepareStatement("SELECT firstName, lastName, telephoneNumber, userName, admin FROM user;");
+            rs = ps.executeQuery();
+            while (rs.next()){
+                UserInfo = new UserInfo(rs.getString("firstName"), rs.getString("lastName"), rs.getInt("telephoneNumber"), rs.getString("userName"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }*/
+
+    public static ObservableList<UserInfo> getUserList(){
+        // Used to populate the table
+        ObservableList<UserInfo> userList = FXCollections.observableArrayList();
+        try {
+            connection();
+            ps = connect.prepareStatement("SELECT firstName, lastName, telephoneNumber, userName, admin FROM user;");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                // creates userinfo object, adds the data to the list
+                UserInfo userInfo = new UserInfo();
+                userInfo.setName(rs.getString("fistName"));
+                userInfo.setLastName(rs.getString("lastName"));
+                userInfo.setNumber(rs.getInt("telephoneNumber"));
+                userInfo.setUsername(rs.getString("userName"));
+                userInfo.setAdmin(rs.getBoolean("admin"));
+                userList.add(userInfo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
     }
 
     private static void connection() {

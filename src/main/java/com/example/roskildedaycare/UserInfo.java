@@ -1,6 +1,30 @@
 package com.example.roskildedaycare;
 
 public class UserInfo {
+    private String name;
+    private String lastName;
+    private int number;
+    private String username;
+    private String password;
+    private boolean admin;
+
+    public void UserInfo(String name, String lastName, int number, String username, String password, boolean admin) {
+        setName(name);
+        setLastName(lastName);
+        setNumber(number);
+        setUsername(username);
+        setPassword(password);
+        setAdmin(admin);
+    }
+
+    public void UserInfo(String name, String lastName, int number, String username, boolean admin) {
+        setName(name);
+        setLastName(lastName);
+        setNumber(number);
+        setUsername(username);
+        setAdmin(admin);
+    }
+
     public String getName() {
         return name;
     }
@@ -17,11 +41,11 @@ public class UserInfo {
         this.lastName = lastName;
     }
 
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
@@ -48,13 +72,6 @@ public class UserInfo {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
-
-    private String name;
-    private String lastName;
-    private String number;
-    private String username;
-    private String password;
-    private boolean admin;
 
     public static String getUsingSystemID() {
         return usingSystemID;
