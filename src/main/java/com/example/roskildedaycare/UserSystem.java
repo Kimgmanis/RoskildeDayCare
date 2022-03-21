@@ -349,11 +349,6 @@ public class UserSystem {
             while (rs.next()) {
                 // creates userinfo object, adds the data to the list
                 UserInfo userInfo = new UserInfo(rs.getString("firstName"), rs.getString("lastName"), rs.getInt("telephoneNumber"), rs.getString("userName"), rs.getBoolean("admin"));
-                userInfo.setFirstName(rs.getString("firstName"));
-                userInfo.setLastName(rs.getString("lastName"));
-                userInfo.setTelephoneNumber(rs.getInt("telephoneNumber"));
-                userInfo.setUserName(rs.getString("userName"));
-                userInfo.setAdmin(rs.getBoolean("admin"));
                 userList.add(userInfo);
             }
         } catch (SQLException e) {
