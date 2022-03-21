@@ -1,36 +1,40 @@
 package com.example.roskildedaycare;
 
 public class UserInfo {
-    private String name;
+    private String firstName;
     private String lastName;
-    private int number;
-    private String username;
+    private int telephoneNumber;
+    private String userName;
     private String password;
     private boolean admin;
 
-    public void UserInfo(String name, String lastName, int number, String username, String password, boolean admin) {
-        setName(name);
+    public UserInfo(String firstName, String lastName, int telephoneNumber, String username, String password, boolean admin) {
+        setFirstName(firstName);
         setLastName(lastName);
-        setNumber(number);
-        setUsername(username);
+        setTelephoneNumber(telephoneNumber);
+        setUserName(username);
         setPassword(password);
         setAdmin(admin);
     }
 
-    public void UserInfo(String name, String lastName, int number, String username, boolean admin) {
-        setName(name);
+    public UserInfo(String firstName, String lastName, int telephoneNumber, String userName, boolean admin) {
+        setFirstName(firstName);
         setLastName(lastName);
-        setNumber(number);
-        setUsername(username);
+        setTelephoneNumber(telephoneNumber);
+        setUserName(userName);
         setAdmin(admin);
     }
 
-    public String getName() {
-        return name;
+    public UserInfo() {
+
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -41,20 +45,20 @@ public class UserInfo {
         this.lastName = lastName;
     }
 
-    public int getNumber() {
-        return number;
+    public int getTelephoneNumber() {
+        return telephoneNumber;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setTelephoneNumber(int telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {

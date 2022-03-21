@@ -29,7 +29,7 @@ public class AdminLoggedInController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         UserInfo temporary = UserSystem.getUserInfo(UserInfo.usingSystemID);
-        welcomeLbl.setText("Welcome Admin: " + temporary.getName() + " " + temporary.getLastName() + "! to the Database");
+        welcomeLbl.setText("Welcome Admin: " + temporary.getFirstName() + " " + temporary.getLastName() + "! to the Database");
 
         logoutBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
