@@ -49,5 +49,11 @@ public class AdminLoggedInController implements Initializable {
                 UserSystem.changeSceneNew(event, "parents.fxml", "Parents");
             }
         });
+        childrenBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.changeSceneNew(event, "kids.fxml", "Students");
+            }
+        });
     }
 }
