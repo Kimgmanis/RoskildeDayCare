@@ -191,8 +191,6 @@ import java.util.ResourceBundle;
                     //kidBtn1.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue())).getKidsID());
                 }
             });
-
-
         }
 
     }

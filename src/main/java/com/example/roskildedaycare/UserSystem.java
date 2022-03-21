@@ -47,7 +47,7 @@ public class UserSystem {
     {
         connection();
         try {
-            ps = connect.prepareStatement("INSERT INTO roskilde_daycare.schedule (studentGroup, dateSchedule, teacher) VALUES (?,?,?)");
+            ps = connect.prepareStatement("REPLACE INTO roskilde_daycare.schedule (studentGroup, dateSchedule, teacher) VALUES (?,?,?)");
             ps.setString(1, group);
             ps.setString(2, date);
             ps.setString(3, teacher);
@@ -59,6 +59,59 @@ public class UserSystem {
             closeConnection();
         }
     }
+    public static String getMaxSchedule()
+    {
+        String maxValue = new String();
+        connection();
+        try {
+            ps = connect.prepareStatement("SELECT COUNT(*) FROM roskilde_daycare.schedule");
+            rs = ps.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("No datesfound");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getMaxSchedule");
+                alert.show();
+            }
+            else {
+                while (rs.next()) {
+                    maxValue = rs.getString("COUNT(*)");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return maxValue;
+    }
+    public static ScheduleController getSchedule (int rowNum)
+    {
+        ScheduleController temporary = new ScheduleController();
+        connection();
+        try {
+            ps = connect.prepareStatement("SELECT studentGroup, dateSchedule, teacher FROM roskilde_daycare.schedule LIMIT ?,1");
+            ps.setInt(1, rowNum);
+            rs = ps.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getKidInfo");
+                alert.show();
+            }
+            else {
+                while (rs.next()) {
+                    temporary.setDate(rs.getString("dateSchedule"));
+                    temporary.setTeacher(rs.getString("teacher"));
+                    temporary.setGroup(rs.getString("studentGroup"));
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return temporary;
+    }
+
     public static String findParent(String kidID)
     {
         String parentID = null;
