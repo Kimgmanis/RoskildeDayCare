@@ -1,6 +1,6 @@
 package com.example.roskildedaycare;
 
-public class ParentInfo {
+public class KidInfo {
 
     public String getName() {
         return name;
@@ -18,24 +18,15 @@ public class ParentInfo {
         this.surname = surname;
     }
 
-    public String getNumber() {
-        return number;
+    public String getGroup() {
+        return group;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public String getKidsID() {
-        return kidsID;
-    }
-
-    public void setKidsID(String kidsID) {
-        this.kidsID = kidsID;
+    public void setGroup(String group) {
+        this.group = group;
     }
 
     private String name;
     private String surname;
-    private String number;
-    private String kidsID;
+    private String group;
 }

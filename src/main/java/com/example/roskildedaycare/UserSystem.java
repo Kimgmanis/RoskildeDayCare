@@ -65,6 +65,120 @@ public class UserSystem {
         stage.show();
 
     }
+    public static void addFamily( String nameP1,String nameP2,String nameKid,String surnameP1,String surnameP2,String surnameKid,String numberP1,String numberP2,String group)
+    {
+        String kidID = addKid(nameKid, surnameKid, group);
+        addPrent(nameP1, surnameP1, numberP1, kidID);
+        if(!nameP2.equals(null)&&!surnameP2.equals(null)&&!numberP2.equals(null))
+        {
+            addPrent(nameP2,surnameP2,numberP2,kidID);
+        }
+    }
+    public static void addPrent(String name, String surname, String number, String kidID)
+    {
+        connection();
+        try {
+            ps = connect.prepareStatement("INSERT INTO roskilde_daycare.parents (firstName, lastName, telephoneNumber, students_id) VALUES (?,?,?,?)");
+            //TODO delete SOP
+            System.out.println(name+surname+number+kidID+ "<----- addParent name,surname, number, kidID");
+            int numberInt = Integer.parseInt(number);
+            int kidIDInt = Integer.parseInt(kidID);
+            ps.setString(1, name);
+            ps.setString(2, surname);
+            ps.setInt(3, numberInt);
+            ps.setInt(4, kidIDInt);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+    }
+    public static String addKid(String name, String surname, String group)
+    {
+        String kidID = null;
+        connection();
+        //TODO delete SOP
+        System.out.println(name + surname + group+"<-------- addKid name,surname, group");
+        try {
+            ps = connect.prepareStatement("INSERT INTO roskilde_daycare.students (firstName, lastName, studentGroup) VALUES (?,?,?)");
+            ps.setString(1, name);
+            ps.setString(2, surname);
+            ps.setString(3, group);
+            ps.executeUpdate();
+            ps = connect.prepareStatement("SELECT ID FROM roskilde_daycare.students ORDER BY ID DESC LIMIT 1;");
+            rs = ps.executeQuery();
+            if (!rs.next()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getParentInfo");
+                alert.show();
+            }
+            else {
+                    kidID=rs.getString("ID");
+                    //TODO delete SOP
+                    System.out.println(kidID+"<-------kids ID");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Got an exception addKid");
+        } finally {
+            closeConnection();
+        }
+        return kidID;
+    }
+    public static String getKidMaxID()
+    {
+        String maxID = new String();
+        connection();
+        try {
+            ps = connect.prepareStatement("SELECT COUNT(*) FROM roskilde_daycare.students");
+            rs = ps.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getKidMaxID");
+                alert.show();
+            }
+            else {
+                while (rs.next()) {
+                    maxID = rs.getString("COUNT(*)");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return maxID;
+    }
+    public static KidInfo getKidInfo(String kidID)
+    {
+        KidInfo temporaryKid = new KidInfo();
+        connection();
+        try {
+            ps = connect.prepareStatement("SELECT firstName, lastName, studentGroup FROM roskilde_daycare.students WHERE ID = ?");
+            ps.setString(1, kidID);
+            rs = ps.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getKidInfo");
+                alert.show();
+            }
+            else {
+                while (rs.next()) {
+                    temporaryKid.setName(rs.getString("firstName"));
+                    temporaryKid.setSurname(rs.getString("lastName"));
+                    temporaryKid.setGroup(rs.getString("studentGroup"));
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return temporaryKid;
+    }
     public static String getParentsMaxID()
     {
         String maxID = new String();
