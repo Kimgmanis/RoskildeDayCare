@@ -30,7 +30,7 @@
                </font>
             </Label>
             <PasswordField fx:id="passwordFld" layoutX="269.0" layoutY="299.0" />
-            <TextField fx:id="telephonenumbeTxtFld" layoutX="269.0" layoutY="187.0" />
+            <TextField fx:id="telephoneTxtFld" layoutX="269.0" layoutY="187.0" />
             <Label layoutX="106.0" layoutY="186.0" text="Telephone Number">
                <font>
                   <Font size="18.0" />

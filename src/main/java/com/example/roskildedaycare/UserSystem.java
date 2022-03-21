@@ -336,6 +336,36 @@ public class UserSystem {
         }
     }
 
+    public static void addNewUser(String firstName, String lastName, String telephoneNumber, String userName, String password) {
+        try {
+            connection();
+            /*ps = connect.prepareStatement("INSERT INTO user (firstName, lastName, telephoneNumber, userName, password, admin) " +
+                    "VALUES ('"+firstName+"', '"+lastName+"', "+telephoneNumber+", '"+userName+"', '"+password+"', 0);");*/
+            ps = connect.prepareStatement("INSERT INTO user (firstName, lastName, telephoneNumber, userName, password) " +
+                    "VALUES (?, ?, ?, ?, ?);");
+            ps.setString(1, firstName);
+            ps.setString(2, lastName);
+            ps.setString(3, telephoneNumber);
+            ps.setString(4, userName);
+            ps.setString(5, password);
+            // ps.setString(6, admin);
+            if (firstName + lastName + telephoneNumber + userName + password != null) {
+                ps.executeUpdate();
+                System.out.println("");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "User created successfully");
+                alert.show();
+            } else {
+                System.out.println("Please fill in all the information. Thank you");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.show();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+    }
+
     private static void connection() {
         try {
             connect = DriverManager.getConnection(url, user, password);

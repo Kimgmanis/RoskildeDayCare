@@ -36,13 +36,13 @@ public class AddNewUserController implements Initializable {
         returnBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserSystem.changeScene(event, "user-management.fxml", "User management", null, null);
+                UserSystem.changeSceneNew(event, "user-management.fxml", "User management");
             }
         });
         createuserBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                UserSystem.addNewUser(firstnameTxtFld.getText(), lastnameTxtFld.getText(), telephoneTxtFld.getText(), usernameTxtFld.getText(), passwordFld.getText());
             }
         });
     }
