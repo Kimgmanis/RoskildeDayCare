@@ -37,23 +37,22 @@ public class viewUserController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        showUsers();
         returnBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserSystem.changeSceneNew(event, "admin-logged-in.fxml", "Main Menu");
+                UserSystem.changeSceneNew(event, "user-management.fxml", "User Management");
             }
         });
     }
-
     public void showUsers() {
-        ObservableList<UserInfo> userList = UserSystem.getUserList();
+        TableView table = new TableView();
+
         firstName.setCellValueFactory(new PropertyValueFactory<UserInfo, String>("firstName"));
         lastName.setCellValueFactory(new PropertyValueFactory<UserInfo, String>("lastName"));
         telephone.setCellValueFactory(new PropertyValueFactory<UserInfo, Integer>("telephoneNumber"));
         userName.setCellValueFactory(new PropertyValueFactory<UserInfo, String>("userName"));
         admin.setCellValueFactory(new PropertyValueFactory<UserInfo, Boolean>("admin"));
 
-        table.setItems(userList);
+        table.setItems(UserSystem.getUserList());
     }
 }
