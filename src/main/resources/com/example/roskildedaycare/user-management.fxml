@@ -11,7 +11,7 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="624.0">
          <children>
-            <Label fx:id="titleLbl" layoutY="43.0" prefHeight="27.0" prefWidth="600.0" text="Welcome to the user management system" textAlignment="CENTER">
+            <Label fx:id="titleLbl" alignment="CENTER" layoutY="43.0" prefHeight="27.0" prefWidth="600.0" text="Welcome to the user management system" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -26,10 +26,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
             <Button fx:id="edituserBtn" layoutX="114.0" layoutY="214.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="376.0" text="Edit user information">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="deleteuserBtn" layoutX="116.0" layoutY="269.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="376.0" text="Delete user">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

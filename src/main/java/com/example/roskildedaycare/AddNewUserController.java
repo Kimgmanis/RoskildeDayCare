@@ -29,6 +29,8 @@ public class AddNewUserController implements Initializable {
     private PasswordField passwordFld;
     @FXML
     private CheckBox admincheckbox;
+    private boolean update = false;
+    private int localID;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,8 +43,24 @@ public class AddNewUserController implements Initializable {
         createuserBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserSystem.addNewUser(firstnameTxtFld.getText(), lastnameTxtFld.getText(), telephoneTxtFld.getText(), usernameTxtFld.getText(), passwordFld.getText(), admincheckbox.isSelected());
+                if(false){
+                    UserSystem.addNewUser(firstnameTxtFld.getText(), lastnameTxtFld.getText(), telephoneTxtFld.getText(), usernameTxtFld.getText(), passwordFld.getText(), admincheckbox.isSelected());
+                } else if(update = true) {
+                    UserSystem.updateUser(localID , firstnameTxtFld.getText(), lastnameTxtFld.getText(), telephoneTxtFld.getText(), usernameTxtFld.getText(), passwordFld.getText(), admincheckbox.isSelected());
+                    update = false;
+                }
             }
         });
+    }
+
+    public void updateUser(int ID) {
+        firstnameTxtFld.setText(UserSystem.getUserInfo(Integer.toString(ID)).getFirstName());
+        lastnameTxtFld.setText(UserSystem.getUserInfo(Integer.toString(ID)).getLastName());
+        telephoneTxtFld.setText(Integer.toString(UserSystem.getUserInfo(Integer.toString(ID)).getTelephoneNumber()));
+        usernameTxtFld.setText(UserSystem.getUserInfo(Integer.toString(ID)).getUserName());
+        passwordFld.setText(UserSystem.getUserInfo(Integer.toString(ID)).getPassword());
+        admincheckbox.setSelected(UserSystem.getUserInfo(Integer.toString(ID)).isAdmin());
+        update = true;
+        localID = ID;
     }
 }
