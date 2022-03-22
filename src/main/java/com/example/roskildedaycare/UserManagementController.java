@@ -20,8 +20,6 @@ public class UserManagementController implements Initializable {
     @FXML
     private Button edituserBtn;
     @FXML
-    private Button deleteuserBtn;
-    @FXML
     private Button returnBtn;
 
 
@@ -42,7 +40,13 @@ public class UserManagementController implements Initializable {
         existinguserBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserSystem.changeSceneNew(event, "view-user.fxml", "View User");
+                UserSystem.changeSceneNew(event, "view-user.fxml", "View user");
+            }
+        });
+        edituserBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.changeSceneNew(event, "edit-user.fxml", "Edit user");
             }
         });
     }

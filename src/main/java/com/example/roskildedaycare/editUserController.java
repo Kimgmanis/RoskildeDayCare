@@ -1,8 +1,5 @@
 package com.example.roskildedaycare;
 
-import javafx.beans.binding.ObjectExpression;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,14 +13,26 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class viewUserController implements Initializable {
+public class editUserController implements Initializable {
 
     @FXML
     private Label titleLbl;
+
+    // Buttons
     @FXML
     private Button returnBtn;
     @FXML
+    private Button searchBtn;
+    @FXML
+    private Button updateBtn;
+    @FXML
+    private Button deleteBtn;
+
+    // Table
+    @FXML
     private TableView<UserInfo> table;
+    @FXML
+    private TableColumn<UserInfo, Integer> id;
     @FXML
     private TableColumn<UserInfo, String> firstName;
     @FXML
@@ -44,14 +53,30 @@ public class viewUserController implements Initializable {
                 UserSystem.changeSceneNew(event, "user-management.fxml", "User Management");
             }
         });
+        updateBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserInfo u = table.getSelectionModel().getSelectedItem();
+                UserSystem.updateUserScene(event, "Update user", u.getID());
+            }
+        });
+        deleteBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserInfo u = table.getSelectionModel().getSelectedItem();
+                table.getItems().remove(u);
+                UserSystem.deleteUser(u.getID());
+            }
+        });
     }
     public void showUsers() {
+        id.setCellValueFactory(new PropertyValueFactory<UserInfo, Integer>("ID"));
         firstName.setCellValueFactory(new PropertyValueFactory<UserInfo, String>("firstName"));
         lastName.setCellValueFactory(new PropertyValueFactory<UserInfo, String>("lastName"));
         telephone.setCellValueFactory(new PropertyValueFactory<UserInfo, Integer>("telephoneNumber"));
         userName.setCellValueFactory(new PropertyValueFactory<UserInfo, String>("userName"));
         admin.setCellValueFactory(new PropertyValueFactory<UserInfo, Boolean>("admin"));
 
-        table.setItems(UserSystem.getUserList());
+        table.setItems(UserSystem.getUserListID());
     }
 }

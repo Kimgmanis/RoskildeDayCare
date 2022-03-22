@@ -11,6 +11,15 @@ public class UserInfo {
         setAdmin(admin);
     }
 
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    private int ID;
     private String firstName;
     private String lastName;
     private int telephoneNumber;
@@ -19,8 +28,16 @@ public class UserInfo {
     private boolean admin;
 
 
-
     public UserInfo(String firstName, String lastName, int telephoneNumber, String userName, boolean admin) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setTelephoneNumber(telephoneNumber);
+        setUserName(userName);
+        setAdmin(admin);
+    }
+
+    public UserInfo(int ID, String firstName, String lastName, int telephoneNumber, String userName, boolean admin) {
+        setID(ID);
         setFirstName(firstName);
         setLastName(lastName);
         setTelephoneNumber(telephoneNumber);

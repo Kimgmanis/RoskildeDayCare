@@ -1,8 +1,5 @@
 package com.example.roskildedaycare;
 
-import javafx.beans.binding.ObjectExpression;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class viewUserController implements Initializable {
+public class viewNewUserController implements Initializable {
 
     @FXML
     private Label titleLbl;
@@ -51,7 +48,6 @@ public class viewUserController implements Initializable {
         telephone.setCellValueFactory(new PropertyValueFactory<UserInfo, Integer>("telephoneNumber"));
         userName.setCellValueFactory(new PropertyValueFactory<UserInfo, String>("userName"));
         admin.setCellValueFactory(new PropertyValueFactory<UserInfo, Boolean>("admin"));
-
-        table.setItems(UserSystem.getUserList());
+        table.setItems(UserSystem.getNewUser());
     }
 }

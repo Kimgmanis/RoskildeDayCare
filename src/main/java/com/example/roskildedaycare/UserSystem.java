@@ -25,14 +25,13 @@ public class UserSystem {
     private static String user = System.getenv("user");
     private static String password = System.getenv("password");
 
-    public static void changeSceneNew(ActionEvent event, String fxmlFile, String title)
-    {
+    public static void changeSceneNew(ActionEvent event, String fxmlFile, String title) {
         Parent root = null;
-        try{
+        try {
             FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource(fxmlFile));
             root = loader.load();
 
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Couldn't change scene");
         }
@@ -42,24 +41,40 @@ public class UserSystem {
         stage.show();
 
     }
-    public static void updateFamilyScene(ActionEvent event, String fxmlFile, String title, String kidID)
-    {
+
+    public static void updateUserScene(ActionEvent event, String title, int userID) {
         Parent root = null;
-            try {
-                FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource("addFamily.fxml"));
-                root = loader.load();
-                AddFamilyController updateController = loader.getController();
-                updateController.updateFamily(kidID);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource("add-new-user.fxml"));
+            root = loader.load();
+            AddNewUserController e = loader.getController();
+            e.updateUser(userID);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
-    public static void deleteSchedule(String date, String group)
-    {
+
+    public static void updateFamilyScene(ActionEvent event, String fxmlFile, String title, String kidID) {
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource("addFamily.fxml"));
+            root = loader.load();
+            AddFamilyController updateController = loader.getController();
+            updateController.updateFamily(kidID);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle(title);
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
+
+    public static void deleteSchedule(String date, String group) {
         connection();
         try {
             ps = connect.prepareStatement("DELETE FROM roskilde_daycare.schedule WHERE dateSchedule = ? AND studentGroup = ?");
@@ -73,8 +88,8 @@ public class UserSystem {
             closeConnection();
         }
     }
-    public static void createSchedule(String group, String date, String teacher)
-    {
+
+    public static void createSchedule(String group, String date, String teacher) {
         connection();
         try {
             ps = connect.prepareStatement("REPLACE INTO roskilde_daycare.schedule (studentGroup, dateSchedule, teacher) VALUES (?,?,?)");
@@ -89,8 +104,8 @@ public class UserSystem {
             closeConnection();
         }
     }
-    public static String getMaxSchedule()
-    {
+
+    public static String getMaxSchedule() {
         String maxValue = new String();
         connection();
         try {
@@ -100,8 +115,7 @@ public class UserSystem {
                 System.out.println("No datesfound");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getMaxSchedule");
                 alert.show();
-            }
-            else {
+            } else {
                 while (rs.next()) {
                     maxValue = rs.getString("COUNT(*)");
                 }
@@ -113,8 +127,8 @@ public class UserSystem {
         }
         return maxValue;
     }
-    public static ScheduleController getSchedule (int rowNum)
-    {
+
+    public static ScheduleController getSchedule(int rowNum) {
         ScheduleController temporary = new ScheduleController();
         connection();
         try {
@@ -125,8 +139,7 @@ public class UserSystem {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getKidInfo");
                 alert.show();
-            }
-            else {
+            } else {
                 while (rs.next()) {
                     temporary.setDate(rs.getString("dateSchedule"));
                     temporary.setTeacher(rs.getString("teacher"));
@@ -141,8 +154,8 @@ public class UserSystem {
         }
         return temporary;
     }
-    public static String findParent(String kidID)
-    {
+
+    public static String findParent(String kidID) {
         String parentID = null;
         connection();
         try {
@@ -153,8 +166,7 @@ public class UserSystem {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.findParent");
                 alert.show();
-            }
-            else {
+            } else {
                 while (rs.next()) {
                     parentID = rs.getString("ID");
 
@@ -167,8 +179,8 @@ public class UserSystem {
         }
         return parentID;
     }
-    public static String findSecondParent(String kidID)
-    {
+
+    public static String findSecondParent(String kidID) {
         String parentID = null;
         connection();
         try {
@@ -190,17 +202,16 @@ public class UserSystem {
         }
         return parentID;
     }
-    public static void addFamily( String nameP1,String nameP2,String nameKid,String surnameP1,String surnameP2,String surnameKid,String numberP1,String numberP2,String group)
-    {
+
+    public static void addFamily(String nameP1, String nameP2, String nameKid, String surnameP1, String surnameP2, String surnameKid, String numberP1, String numberP2, String group) {
         String kidID = addKid(nameKid, surnameKid, group);
         addPrent(nameP1, surnameP1, numberP1, kidID);
-        if(!nameP2.equals(null)&&!surnameP2.equals(null)&&!numberP2.equals(null)&&!nameP2.equals("")&&!surnameP2.equals("")&&!numberP2.equals(""))
-        {
-            addPrent(nameP2,surnameP2,numberP2,kidID);
+        if (!nameP2.equals(null) && !surnameP2.equals(null) && !numberP2.equals(null) && !nameP2.equals("") && !surnameP2.equals("") && !numberP2.equals("")) {
+            addPrent(nameP2, surnameP2, numberP2, kidID);
         }
     }
-    public static void addPrent(String name, String surname, String number, String kidID)
-    {
+
+    public static void addPrent(String name, String surname, String number, String kidID) {
         connection();
         try {
             ps = connect.prepareStatement("INSERT INTO roskilde_daycare.parents (firstName, lastName, telephoneNumber, students_id) VALUES (?,?,?,?)");
@@ -218,8 +229,8 @@ public class UserSystem {
         }
 
     }
-    public static String addKid(String name, String surname, String group)
-    {
+
+    public static String addKid(String name, String surname, String group) {
         String kidID = null;
         connection();
         try {
@@ -233,9 +244,8 @@ public class UserSystem {
             if (!rs.next()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getParentInfo");
                 alert.show();
-            }
-            else {
-                    kidID=rs.getString("ID");
+            } else {
+                kidID = rs.getString("ID");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -245,8 +255,8 @@ public class UserSystem {
         }
         return kidID;
     }
-    public static String getKidMaxID()
-    {
+
+    public static String getKidMaxID() {
         String maxID = new String();
         connection();
         try {
@@ -256,8 +266,7 @@ public class UserSystem {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getKidMaxID");
                 alert.show();
-            }
-            else {
+            } else {
                 while (rs.next()) {
                     maxID = rs.getString("COUNT(*)");
                 }
@@ -269,8 +278,8 @@ public class UserSystem {
         }
         return maxID;
     }
-    public static KidInfo getKidInfo(String kidID)
-    {
+
+    public static KidInfo getKidInfo(String kidID) {
         KidInfo temporaryKid = new KidInfo();
         connection();
         try {
@@ -281,8 +290,7 @@ public class UserSystem {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getKidInfo");
                 alert.show();
-            }
-            else {
+            } else {
                 while (rs.next()) {
                     temporaryKid.setName(rs.getString("firstName"));
                     temporaryKid.setSurname(rs.getString("lastName"));
@@ -297,8 +305,8 @@ public class UserSystem {
         }
         return temporaryKid;
     }
-    public static String getParentsMaxID()
-    {
+
+    public static String getParentsMaxID() {
         String maxID = new String();
         connection();
         try {
@@ -308,8 +316,7 @@ public class UserSystem {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getParentsMaxID");
                 alert.show();
-            }
-            else {
+            } else {
                 while (rs.next()) {
                     maxID = rs.getString("COUNT(*)");
                 }
@@ -321,8 +328,8 @@ public class UserSystem {
         }
         return maxID;
     }
-    public static ParentInfo getParentInfo(String parentID)
-    {
+
+    public static ParentInfo getParentInfo(String parentID) {
         ParentInfo temporaryParent = new ParentInfo();
         connection();
         try {
@@ -333,8 +340,7 @@ public class UserSystem {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getParentInfo");
                 alert.show();
-            }
-            else {
+            } else {
                 while (rs.next()) {
                     temporaryParent.setName(rs.getString("firstName"));
                     temporaryParent.setSurname(rs.getString("lastName"));
@@ -350,8 +356,8 @@ public class UserSystem {
         }
         return temporaryParent;
     }
-    public static UserInfo getUserInfo(String inSystemID)
-    {
+
+    public static UserInfo getUserInfo(String inSystemID) {
         connection();
         UserInfo temporaryUser = new UserInfo();
         try {
@@ -362,8 +368,7 @@ public class UserSystem {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getUserInfo");
                 alert.show();
-            }
-            else {
+            } else {
                 while (rs.next()) {
                     temporaryUser.setFirstName(rs.getString("firstName"));
                     temporaryUser.setLastName(rs.getString("lastName"));
@@ -380,8 +385,7 @@ public class UserSystem {
         return temporaryUser;
     }
 
-    public static String doubleToString(double num)
-    {
+    public static String doubleToString(double num) {
         NumberFormat nf = DecimalFormat.getInstance();
         nf.setMaximumFractionDigits(0);
         String str = nf.format(num);
@@ -399,8 +403,7 @@ public class UserSystem {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found");
                 alert.show();
-            }
-            else {
+            } else {
                 while (rs.next()) {
                     String retrievedFirstName = rs.getString("firstName");
                     String retrievedLastName = rs.getString("lastName");
@@ -410,7 +413,7 @@ public class UserSystem {
 
                     if (retrievedPassword.equals(password) && retrievedAdmin) {
                         //adminChangeScene(event, "admin-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
-                        changeSceneNew(event,"admin-logged-in.fxml","Admin menu");
+                        changeSceneNew(event, "admin-logged-in.fxml", "Admin menu");
                     } else if (retrievedPassword.equals(password)) {
                         changeSceneNew(event, "user-logged-in.fxml", "Welcome!");
                     } else {
@@ -455,10 +458,40 @@ public class UserSystem {
         }
     }
 
-    public static ObservableList<UserInfo> getUserList(){
-        // Used to populate the table
+    public static void updateUser(int ID, String firstName, String lastName, String telephoneNumber, String userName, String password, boolean admin) {
+        try {
+            connection();
+            ps = connect.prepareStatement("REPLACE INTO user (ID, firstName, lastName, telephoneNumber, userName, password, admin)" +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?);");
+            ps.setString(1, Integer.toString(ID));
+            ps.setString(2, firstName);
+            ps.setString(3, lastName);
+            ps.setString(4, telephoneNumber);
+            ps.setString(5, userName);
+            ps.setString(6, password);
+            ps.setBoolean(7, admin);
+            if (firstName + lastName + telephoneNumber + userName + password != null) {
+                ps.executeUpdate();
+                System.out.println("");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "User created successfully");
+                alert.show();
+            } else {
+                System.out.println("Please fill in all the information. Thank you");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.show();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+    }
+
+    public static ObservableList<UserInfo> getUserList() {
+        // Create observableList
         ObservableList<UserInfo> userList = FXCollections.observableArrayList();
         try {
+            // Connect to DB
             connection();
             ps = connect.prepareStatement("SELECT firstName, lastName, telephoneNumber, userName, admin FROM user;");
             rs = ps.executeQuery();
@@ -471,6 +504,57 @@ public class UserSystem {
             e.printStackTrace();
         }
         return userList;
+    }
+
+    public static ObservableList<UserInfo> getUserListID() {
+        // Create observableList
+        ObservableList<UserInfo> userList = FXCollections.observableArrayList();
+        try {
+            // Connect to DB
+            connection();
+            ps = connect.prepareStatement("SELECT ID, firstName, lastName, telephoneNumber, userName, admin FROM user;");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                // creates userinfo object, adds the data to the list
+                UserInfo userInfo = new UserInfo(rs.getInt("ID"), rs.getString("firstName"), rs.getString("lastName"), rs.getInt("telephoneNumber"), rs.getString("userName"), rs.getBoolean("admin"));
+                userList.add(userInfo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+    public static ObservableList<UserInfo> getNewUser() {
+        // Create observableList
+        ObservableList<UserInfo> userList = FXCollections.observableArrayList();
+        try {
+            // Connect to DB
+            connection();
+            ps = connect.prepareStatement("SELECT firstName, lastName, telephoneNumber, userName, admin FROM user ORDER BY ID DESC LIMIT 0;");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                // creates userinfo object, adds the data to the list
+                UserInfo userInfo = new UserInfo(rs.getString("firstName"), rs.getString("lastName"), rs.getInt("telephoneNumber"), rs.getString("userName"), rs.getBoolean("admin"));
+                userList.add(userInfo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+    public static void deleteUser(int ID) {
+        connection();
+        try {
+            ps = connect.prepareStatement("DELETE FROM roskilde_daycare.user WHERE ID = ?;");
+            ps.setString(1, String.valueOf(ID));
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
     }
 
     private static void connection() {
@@ -496,13 +580,13 @@ public class UserSystem {
                 e.printStackTrace();
             }
         }
-        if (rs != null) {
+        /*if (rs != null) {
             try {
                 rs.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
         if (psInsert != null) {
             try {
                 psInsert.close();
