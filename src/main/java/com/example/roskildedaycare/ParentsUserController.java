@@ -73,7 +73,7 @@ public class ParentsUserController implements Initializable {
         returnBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserSystem.changeSceneNew(event, "admin-logged-in.fxml", "Log in");
+                UserSystem.changeSceneNew(event, "user-logged-in.fxml", "Menu");
 
             }
         });

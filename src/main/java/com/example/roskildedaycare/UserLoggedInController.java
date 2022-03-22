@@ -42,7 +42,7 @@ public class UserLoggedInController implements Initializable {
         childrenBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserSystem.changeSceneNew(event, "kids.fxml", "Students");
+                UserSystem.changeSceneNew(event, "kidsUser.fxml", "Students");
             }
         });
         scheduleBtn.setOnAction(new EventHandler<ActionEvent>() {

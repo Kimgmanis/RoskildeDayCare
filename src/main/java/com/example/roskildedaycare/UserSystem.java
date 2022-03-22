@@ -42,8 +42,8 @@ public class UserSystem {
         stage.show();
 
     }
-
-    public static void updateFamilyScene(ActionEvent event, String fxmlFile, String title, String kidID) {
+    public static void updateFamilyScene(ActionEvent event, String fxmlFile, String title, String kidID)
+    {
         Parent root = null;
             try {
                 FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource("addFamily.fxml"));
@@ -58,7 +58,6 @@ public class UserSystem {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
-
     public static void deleteSchedule(String date, String group)
     {
         connection();
@@ -150,7 +149,7 @@ public class UserSystem {
             ps = connect.prepareStatement("SELECT ID FROM roskilde_daycare.parents WHERE students_id = ?");
             ps.setString(1, kidID);
             rs = ps.executeQuery();
-            if (!rs.isBeforeFirst()) {
+            if (!rs.next()) {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.findParent");
                 alert.show();
@@ -221,6 +220,32 @@ public class UserSystem {
             closeConnection();
         }
 
+    }
+    public static String findKid(String parentID)
+    {
+        String kidID = null;
+        connection();
+        try {
+            ps = connect.prepareStatement("SELECT students_id FROM roskilde_daycare.parents WHERE ID = ?");
+            ps.setString(1, parentID);
+            rs = ps.executeQuery();
+            if (!rs.next()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.findKid");
+                alert.show();
+            }
+            else {
+                while (rs.next()) {
+                    kidID = rs.getString("ID");
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return kidID;
     }
     public static String addKid(String name, String surname, String group)
     {

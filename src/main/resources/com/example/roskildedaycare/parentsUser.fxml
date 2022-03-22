@@ -9,44 +9,35 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.roskildedaycare.ParentsUserController">
    <children>
-      <TextFlow fx:id="parentsTxt" layoutX="33.0" layoutY="37.0" prefHeight="300.0" prefWidth="550.0">
+      <TextFlow fx:id="parentsTxt" layoutX="58.0" layoutY="46.0" prefHeight="255.0" prefWidth="448.0">
          <children>
             <Label fx:id="nameTxt1" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="surnameTxt1" prefHeight="30.0" prefWidth="137.0" text="Label" />
-            <Button fx:id="kidBtn1" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" />
             <Label fx:id="numberTxt1" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="nameTxt2" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="surnameTxt2" prefHeight="30.0" prefWidth="137.0" text="Label" />
-            <Button fx:id="kidBtn2" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" text="Button" />
             <Label fx:id="numberTxt2" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="nameTxt3" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="surnameTxt3" prefHeight="30.0" prefWidth="137.0" text="Label" />
-            <Button fx:id="kidBtn3" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" text="Button" />
             <Label fx:id="numberTxt3" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="nameTxt4" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="surnameTxt4" prefHeight="30.0" prefWidth="137.0" text="Label" />
-            <Button fx:id="kidBtn4" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" text="Button" />
             <Label fx:id="numberTxt4" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="nameTxt5" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="surnameTxt5" prefHeight="30.0" prefWidth="137.0" text="Label" />
-            <Button fx:id="kidBtn5" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" text="Button" />
             <Label fx:id="numberTxt5" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="nameTxt6" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="surnameTxt6" prefHeight="30.0" prefWidth="137.0" text="Label" />
-            <Button fx:id="kidBtn6" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" text="Button" />
             <Label fx:id="numberTxt6" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="nameTxt7" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="surnameTxt7" prefHeight="30.0" prefWidth="137.0" text="Label" />
-            <Button fx:id="kidBtn7" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" text="Button" />
             <Label fx:id="numberTxt7" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="nameTxt8" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="surnameTxt8" prefHeight="30.0" prefWidth="137.0" text="Label" />
-            <Button fx:id="kidBtn8" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" text="button" />
             <Label fx:id="numberTxt8" prefHeight="30.0" prefWidth="137.0" text="Label" />
          </children>
       </TextFlow>
       <Button fx:id="returnBtn" layoutX="521.0" layoutY="369.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="75.0" text="Return" />
       <ScrollBar fx:id="upDownScroll" layoutX="596.0" layoutY="37.0" orientation="VERTICAL" prefHeight="274.0" prefWidth="14.0" />
-      <Button fx:id="addBtn" layoutX="49.0" layoutY="369.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="80.0" text="Add parent" />
    </children>
 </AnchorPane>
