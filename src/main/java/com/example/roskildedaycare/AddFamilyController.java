@@ -123,7 +123,7 @@ public class AddFamilyController implements Initializable{
             numberP1Txt.setText(UserSystem.getParentInfo(p1ID).getNumber());
 
             String p2ID = UserSystem.findSecondParent(kidID);
-            if(!p2ID.equals(null))
+            if(p2ID!=null)
             {
                 nameP2Txt.setText(UserSystem.getParentInfo(p2ID).getName());
                 surnameP2Txt.setText(UserSystem.getParentInfo(p2ID).getSurname());

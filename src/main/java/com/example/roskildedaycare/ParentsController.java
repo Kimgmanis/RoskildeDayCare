@@ -107,49 +107,49 @@ import java.util.ResourceBundle;
             kidBtn1.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.findKid(UserSystem.doubleToString(upDownScroll.getValue())));
+                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue())).getKidsID());
                 }
             });
             kidBtn2.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.findKid(UserSystem.doubleToString(upDownScroll.getValue()+1)));
+                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+1)).getKidsID());
                 }
             });
             kidBtn3.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.findKid(UserSystem.doubleToString(upDownScroll.getValue()+2)));
+                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+2)).getKidsID());
                 }
             });
             kidBtn4.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.findKid(UserSystem.doubleToString(upDownScroll.getValue()+3)));
+                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+3)).getKidsID());
                 }
             });
             kidBtn5.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.findKid(UserSystem.doubleToString(upDownScroll.getValue()+4)));
+                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+4)).getKidsID());
                 }
             });
             kidBtn6.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.findKid(UserSystem.doubleToString(upDownScroll.getValue()+5)));
+                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+5)).getKidsID());
                 }
             });
             kidBtn7.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.findKid(UserSystem.doubleToString(upDownScroll.getValue()+6)));
+                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+6)).getKidsID());
                 }
             });
             kidBtn8.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.findKid(UserSystem.doubleToString(upDownScroll.getValue()+7)));
+                    UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+7)).getKidsID());
                 }
             });
 

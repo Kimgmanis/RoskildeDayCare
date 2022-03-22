@@ -6,14 +6,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.TextFlow?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.roskildedaycare.KidsController">
    <children>
       <TextFlow fx:id="parentsTxt" layoutX="23.0" layoutY="27.0" prefHeight="300.0" prefWidth="550.0">
          <children>
             <Label fx:id="nameTxt1" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="surnameTxt1" prefHeight="30.0" prefWidth="137.0" text="Label" />
-            <Button fx:id="kidBtn1" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" />
+            <Button fx:id="kidBtn1" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" text="Button" />
             <Label fx:id="numberTxt1" prefHeight="30.0" prefWidth="137.0" text="Label" textAlignment="CENTER" />
             <Label fx:id="nameTxt2" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="surnameTxt2" prefHeight="30.0" prefWidth="137.0" text="Label" />

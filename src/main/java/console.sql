@@ -8,3 +8,7 @@ SELECT studentGroup, dateSchedule, teacher FROM roskilde_daycare.schedule LIMIT 
 
 SELECT ID FROM roskilde_daycare.parents
 WHERE students_id = 1 LIMIT 1,1 ;
+
+SELECT password, firstName, lastName, admin, telephoneNumber FROM roskilde_daycare.user WHERE ID = 1
+
+SELECT ID FROM roskilde_daycare.parents WHERE students_id = 1 LIMIT 0,1;
