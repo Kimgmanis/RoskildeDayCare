@@ -42,6 +42,38 @@ public class UserSystem {
         stage.show();
 
     }
+
+    public static void updateFamilyScene(ActionEvent event, String fxmlFile, String title, String kidID) {
+        Parent root = null;
+            try {
+                FXMLLoader loader = new FXMLLoader(UserSystem.class.getResource("addFamily.fxml"));
+                root = loader.load();
+                AddFamilyController updateController = loader.getController();
+                updateController.updateFamily(kidID);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle(title);
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
+
+    public static void deleteSchedule(String date, String group)
+    {
+        connection();
+        try {
+            ps = connect.prepareStatement("DELETE FROM roskilde_daycare.schedule WHERE dateSchedule = ? AND studentGroup = ?");
+            ps.setString(2, group);
+            ps.setString(1, date);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("deleteSchedule");
+        } finally {
+            closeConnection();
+        }
+    }
     public static void createSchedule(String group, String date, String teacher)
     {
         connection();
@@ -110,7 +142,6 @@ public class UserSystem {
         }
         return temporary;
     }
-
     public static String findParent(String kidID)
     {
         String parentID = null;
@@ -121,7 +152,33 @@ public class UserSystem {
             rs = ps.executeQuery();
             if (!rs.isBeforeFirst()) {
                 System.out.println("User not found");
-                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.getKidInfo");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.findParent");
+                alert.show();
+            }
+            else {
+                while (rs.next()) {
+                    parentID = rs.getString("ID");
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return parentID;
+    }
+    public static String findSecondParent(String kidID)
+    {
+        String parentID = null;
+        connection();
+        try {
+            ps = connect.prepareStatement("SELECT ID FROM roskilde_daycare.parents WHERE students_id = ? LIMIT 1,1");
+            ps.setString(1, kidID);
+            rs = ps.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "User not found in UserSystem.findSecondParent");
                 alert.show();
             }
             else {
@@ -317,7 +374,6 @@ public class UserSystem {
                     temporaryUser.setPassword(rs.getString("password"));
                     temporaryUser.setAdmin(rs.getBoolean("admin"));
                     temporaryUser.setTelephoneNumber(rs.getInt("telephoneNumber"));
-
                 }
             }
         } catch (SQLException e) {
@@ -327,6 +383,7 @@ public class UserSystem {
         }
         return temporaryUser;
     }
+
     public static String doubleToString(double num)
     {
         NumberFormat nf = DecimalFormat.getInstance();

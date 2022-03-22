@@ -104,6 +104,55 @@ public class KidsController implements Initializable {
             }
         });
 
+        kidBtn1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.doubleToString(upDownScroll.getValue()));
+            }
+        });
+        kidBtn2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.doubleToString(upDownScroll.getValue()+1));
+            }
+        });
+        kidBtn3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.doubleToString(upDownScroll.getValue()+2));
+            }
+        });
+        kidBtn4.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.doubleToString(upDownScroll.getValue()+3));
+            }
+        });
+        kidBtn5.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.doubleToString(upDownScroll.getValue()+4));
+            }
+        });
+        kidBtn6.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.doubleToString(upDownScroll.getValue()+5));
+            }
+        });
+        kidBtn7.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.doubleToString(upDownScroll.getValue()+6));
+            }
+        });
+        kidBtn8.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.updateFamilyScene(event, "addFamily.fxml", "Updating family", UserSystem.doubleToString(upDownScroll.getValue()+7));
+            }
+        });
+
         //Checks how many kids are in DB
         double parentsMaxID = Double.parseDouble(UserSystem.getKidMaxID());
         //Sets scroll bar to scrollbar maximum amount same as kids amount in the DB

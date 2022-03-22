@@ -28,6 +28,10 @@ public class UserInfo {
         setAdmin(admin);
     }
 
+    public UserInfo() {
+
+    }
+
 
     public String getFirstName() {
         return firstName;

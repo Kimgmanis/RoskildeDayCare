@@ -82,10 +82,8 @@ public class AddFamilyController implements Initializable{
                 if(!nameP1Txt.equals(null)&&!surnameP1Txt.equals(null)&&!numberP1Txt.equals(null)&&!nameKidTxt.equals(null)&&!surnameKidTxt.equals(null)&&!chosenGroup[0].equals(null))
                 {
                     UserSystem.addFamily(nameP1Txt.getText(),nameP2Txt.getText(),nameKidTxt.getText(),surnameP1Txt.getText(),surnameP2Txt.getText(),surnameKidTxt.getText(),numberP1Txt.getText(),numberP2Txt.getText(),chosenGroup[0]);
-                    //TODO delete SOP
-                    System.out.println(nameP1Txt.getText()+nameP2Txt.getText()+"<------ addFamilyController nameP1, nameP2");
 
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Family created successfully");
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Information saved successfully");
                     alert.show();
                     nameP1Txt.setText(null);
                     nameP2Txt.setText(null);
@@ -111,8 +109,26 @@ public class AddFamilyController implements Initializable{
                 }
             }
         });
+    }
 
+    public void updateFamily(String kidID)
+    {
+            String p1ID = UserSystem.findParent(kidID);
+            nameKidTxt.setText(UserSystem.getKidInfo(kidID).getName());
+            surnameKidTxt.setText(UserSystem.getKidInfo(kidID).getSurname());
+            groupChoice.setValue(UserSystem.getKidInfo(kidID).getGroup());
 
+            nameP1Txt.setText(UserSystem.getParentInfo(p1ID).getName());
+            surnameP1Txt.setText(UserSystem.getParentInfo(p1ID).getSurname());
+            numberP1Txt.setText(UserSystem.getParentInfo(p1ID).getNumber());
+
+            String p2ID = UserSystem.findSecondParent(kidID);
+            if(!p2ID.equals(null))
+            {
+                nameP2Txt.setText(UserSystem.getParentInfo(p2ID).getName());
+                surnameP2Txt.setText(UserSystem.getParentInfo(p2ID).getSurname());
+                numberP2Txt.setText(UserSystem.getParentInfo(p2ID).getNumber());
+            }
     }
 
 }

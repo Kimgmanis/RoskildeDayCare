@@ -123,6 +123,264 @@ public class ScheduleController implements Initializable{
             }
         });
 
+        kidBtn1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.deleteSchedule(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getDate(), UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getGroup());
+
+                nameTxt1.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getGroup());
+                nameTxt2.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue())).getGroup());
+                nameTxt3.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getGroup());
+                nameTxt4.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getGroup());
+                nameTxt5.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getGroup());
+                nameTxt6.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getGroup());
+                nameTxt7.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getGroup());
+                nameTxt8.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getGroup());
+
+                surnameTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getTeacher());
+                surnameTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getTeacher());
+                surnameTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getTeacher());
+                surnameTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getTeacher());
+                surnameTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getTeacher());
+                surnameTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getTeacher());
+                surnameTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getTeacher());
+                surnameTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getTeacher());
+
+                numberTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getDate());
+                numberTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getDate());
+                numberTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getDate());
+                numberTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getDate());
+                numberTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getDate());
+                numberTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getDate());
+                numberTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getDate());
+                numberTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getDate());
+            }
+        });
+        kidBtn2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.deleteSchedule(UserSystem.getSchedule((int)(upDownScroll.getValue())).getDate(), UserSystem.getSchedule((int)(upDownScroll.getValue())).getGroup());
+                nameTxt1.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getGroup());
+                nameTxt2.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue())).getGroup());
+                nameTxt3.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getGroup());
+                nameTxt4.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getGroup());
+                nameTxt5.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getGroup());
+                nameTxt6.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getGroup());
+                nameTxt7.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getGroup());
+                nameTxt8.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getGroup());
+
+                surnameTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getTeacher());
+                surnameTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getTeacher());
+                surnameTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getTeacher());
+                surnameTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getTeacher());
+                surnameTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getTeacher());
+                surnameTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getTeacher());
+                surnameTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getTeacher());
+                surnameTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getTeacher());
+
+                numberTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getDate());
+                numberTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getDate());
+                numberTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getDate());
+                numberTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getDate());
+                numberTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getDate());
+                numberTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getDate());
+                numberTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getDate());
+                numberTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getDate());
+            }
+        });
+        kidBtn3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.deleteSchedule(UserSystem.getSchedule((int)(upDownScroll.getValue()+1)).getDate(), UserSystem.getSchedule((int)(upDownScroll.getValue()+1)).getGroup());
+                nameTxt1.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getGroup());
+                nameTxt2.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue())).getGroup());
+                nameTxt3.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getGroup());
+                nameTxt4.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getGroup());
+                nameTxt5.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getGroup());
+                nameTxt6.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getGroup());
+                nameTxt7.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getGroup());
+                nameTxt8.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getGroup());
+
+                surnameTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getTeacher());
+                surnameTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getTeacher());
+                surnameTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getTeacher());
+                surnameTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getTeacher());
+                surnameTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getTeacher());
+                surnameTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getTeacher());
+                surnameTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getTeacher());
+                surnameTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getTeacher());
+
+                numberTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getDate());
+                numberTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getDate());
+                numberTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getDate());
+                numberTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getDate());
+                numberTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getDate());
+                numberTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getDate());
+                numberTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getDate());
+                numberTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getDate());
+            }
+        });
+        kidBtn4.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.deleteSchedule(UserSystem.getSchedule((int)(upDownScroll.getValue()+2)).getDate(), UserSystem.getSchedule((int)(upDownScroll.getValue()+2)).getGroup());
+                nameTxt1.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getGroup());
+                nameTxt2.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue())).getGroup());
+                nameTxt3.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getGroup());
+                nameTxt4.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getGroup());
+                nameTxt5.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getGroup());
+                nameTxt6.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getGroup());
+                nameTxt7.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getGroup());
+                nameTxt8.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getGroup());
+
+                surnameTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getTeacher());
+                surnameTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getTeacher());
+                surnameTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getTeacher());
+                surnameTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getTeacher());
+                surnameTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getTeacher());
+                surnameTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getTeacher());
+                surnameTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getTeacher());
+                surnameTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getTeacher());
+
+                numberTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getDate());
+                numberTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getDate());
+                numberTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getDate());
+                numberTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getDate());
+                numberTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getDate());
+                numberTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getDate());
+                numberTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getDate());
+                numberTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getDate());
+            }
+        });
+        kidBtn5.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.deleteSchedule(UserSystem.getSchedule((int)(upDownScroll.getValue()+3)).getDate(), UserSystem.getSchedule((int)(upDownScroll.getValue()+4)).getGroup());
+                nameTxt1.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getGroup());
+                nameTxt2.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue())).getGroup());
+                nameTxt3.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getGroup());
+                nameTxt4.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getGroup());
+                nameTxt5.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getGroup());
+                nameTxt6.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getGroup());
+                nameTxt7.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getGroup());
+                nameTxt8.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getGroup());
+
+                surnameTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getTeacher());
+                surnameTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getTeacher());
+                surnameTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getTeacher());
+                surnameTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getTeacher());
+                surnameTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getTeacher());
+                surnameTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getTeacher());
+                surnameTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getTeacher());
+                surnameTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getTeacher());
+
+                numberTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getDate());
+                numberTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getDate());
+                numberTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getDate());
+                numberTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getDate());
+                numberTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getDate());
+                numberTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getDate());
+                numberTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getDate());
+                numberTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getDate());
+            }
+        });
+        kidBtn6.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.deleteSchedule(UserSystem.getSchedule((int)(upDownScroll.getValue()+4)).getDate(), UserSystem.getSchedule((int)(upDownScroll.getValue()+4)).getGroup());
+                nameTxt1.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getGroup());
+                nameTxt2.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue())).getGroup());
+                nameTxt3.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getGroup());
+                nameTxt4.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getGroup());
+                nameTxt5.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getGroup());
+                nameTxt6.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getGroup());
+                nameTxt7.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getGroup());
+                nameTxt8.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getGroup());
+
+                surnameTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getTeacher());
+                surnameTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getTeacher());
+                surnameTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getTeacher());
+                surnameTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getTeacher());
+                surnameTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getTeacher());
+                surnameTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getTeacher());
+                surnameTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getTeacher());
+                surnameTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getTeacher());
+
+                numberTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getDate());
+                numberTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getDate());
+                numberTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getDate());
+                numberTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getDate());
+                numberTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getDate());
+                numberTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getDate());
+                numberTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getDate());
+                numberTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getDate());
+            }
+        });
+        kidBtn7.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.deleteSchedule(UserSystem.getSchedule((int)(upDownScroll.getValue()+5)).getDate(), UserSystem.getSchedule((int)(upDownScroll.getValue()+5)).getGroup());
+                nameTxt1.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getGroup());
+                nameTxt2.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue())).getGroup());
+                nameTxt3.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getGroup());
+                nameTxt4.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getGroup());
+                nameTxt5.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getGroup());
+                nameTxt6.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getGroup());
+                nameTxt7.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getGroup());
+                nameTxt8.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getGroup());
+
+                surnameTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getTeacher());
+                surnameTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getTeacher());
+                surnameTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getTeacher());
+                surnameTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getTeacher());
+                surnameTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getTeacher());
+                surnameTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getTeacher());
+                surnameTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getTeacher());
+                surnameTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getTeacher());
+
+                numberTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getDate());
+                numberTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getDate());
+                numberTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getDate());
+                numberTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getDate());
+                numberTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getDate());
+                numberTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getDate());
+                numberTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getDate());
+                numberTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getDate());
+            }
+        });
+        kidBtn8.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.deleteSchedule(UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getDate(), UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getGroup());
+                nameTxt1.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getGroup());
+                nameTxt2.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue())).getGroup());
+                nameTxt3.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getGroup());
+                nameTxt4.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getGroup());
+                nameTxt5.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getGroup());
+                nameTxt6.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getGroup());
+                nameTxt7.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getGroup());
+                nameTxt8.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getGroup());
+
+                surnameTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getTeacher());
+                surnameTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getTeacher());
+                surnameTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getTeacher());
+                surnameTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getTeacher());
+                surnameTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getTeacher());
+                surnameTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getTeacher());
+                surnameTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getTeacher());
+                surnameTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getTeacher());
+
+                numberTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getDate());
+                numberTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getDate());
+                numberTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getDate());
+                numberTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getDate());
+                numberTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getDate());
+                numberTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getDate());
+                numberTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getDate());
+                numberTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getDate());
+            }
+        });
+
         //Checks how many parents are in DB
         double scheduleMaxValue = Double.parseDouble(UserSystem.getMaxSchedule());
         //Sets scroll bar to scrollbar maximum amount same as parents amount in the DB
@@ -131,32 +389,32 @@ public class ScheduleController implements Initializable{
         upDownScroll.setValue(1);
 
         // sets values when u open list
-        nameTxt1.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getGroup());
-        nameTxt2.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue())).getGroup());
-        nameTxt3.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()+1)).getGroup());
-        nameTxt4.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()+2)).getGroup());
-        nameTxt5.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()+3)).getGroup());
-        nameTxt6.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()+4)).getGroup());
-        nameTxt7.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()+5)).getGroup());
-        nameTxt8.setText("                  "+UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getGroup());
+            nameTxt1.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getGroup());
+            nameTxt2.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue())).getGroup());
+            nameTxt3.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getGroup());
+            nameTxt4.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getGroup());
+            nameTxt5.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getGroup());
+            nameTxt6.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getGroup());
+            nameTxt7.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getGroup());
+            nameTxt8.setText("                  " + UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getGroup());
 
-        surnameTxt1.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
-        surnameTxt2.setText(UserSystem.getSchedule((int)(upDownScroll.getValue())).getTeacher());
-        surnameTxt3.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+1)).getTeacher());
-        surnameTxt4.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+2)).getTeacher());
-        surnameTxt5.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+3)).getTeacher());
-        surnameTxt6.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+4)).getTeacher());
-        surnameTxt7.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+5)).getTeacher());
-        surnameTxt8.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getTeacher());
+            surnameTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getTeacher());
+            surnameTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getTeacher());
+            surnameTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getTeacher());
+            surnameTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getTeacher());
+            surnameTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getTeacher());
+            surnameTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getTeacher());
+            surnameTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getTeacher());
+            surnameTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getTeacher());
 
-        numberTxt1.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
-        numberTxt2.setText(UserSystem.getSchedule((int)(upDownScroll.getValue())).getTeacher());
-        numberTxt3.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+1)).getTeacher());
-        numberTxt4.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+2)).getTeacher());
-        numberTxt5.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+3)).getTeacher());
-        numberTxt6.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+4)).getTeacher());
-        numberTxt7.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+5)).getTeacher());
-        numberTxt8.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getTeacher());
+            numberTxt1.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() - 1)).getDate());
+            numberTxt2.setText(UserSystem.getSchedule((int) (upDownScroll.getValue())).getDate());
+            numberTxt3.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 1)).getDate());
+            numberTxt4.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 2)).getDate());
+            numberTxt5.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 3)).getDate());
+            numberTxt6.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 4)).getDate());
+            numberTxt7.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 5)).getDate());
+            numberTxt8.setText(UserSystem.getSchedule((int) (upDownScroll.getValue() + 6)).getDate());
 
         // scrolls down when scroll bar being triggered
         upDownScroll.valueProperty().addListener(new ChangeListener<Number>()
@@ -180,14 +438,14 @@ public class ScheduleController implements Initializable{
                 surnameTxt7.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+5)).getTeacher());
                 surnameTxt8.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getTeacher());
 
-                numberTxt1.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getTeacher());
-                numberTxt2.setText(UserSystem.getSchedule((int)(upDownScroll.getValue())).getTeacher());
-                numberTxt3.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+1)).getTeacher());
-                numberTxt4.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+2)).getTeacher());
-                numberTxt5.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+3)).getTeacher());
-                numberTxt6.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+4)).getTeacher());
-                numberTxt7.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+5)).getTeacher());
-                numberTxt8.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getTeacher());
+                numberTxt1.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()-1)).getDate());
+                numberTxt2.setText(UserSystem.getSchedule((int)(upDownScroll.getValue())).getDate());
+                numberTxt3.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+1)).getDate());
+                numberTxt4.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+2)).getDate());
+                numberTxt5.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+3)).getDate());
+                numberTxt6.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+4)).getDate());
+                numberTxt7.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+5)).getDate());
+                numberTxt8.setText(UserSystem.getSchedule((int)(upDownScroll.getValue()+6)).getDate());
             }
         });
     }

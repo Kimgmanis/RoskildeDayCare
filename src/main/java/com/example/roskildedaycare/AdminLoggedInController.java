@@ -61,5 +61,6 @@ public class AdminLoggedInController implements Initializable {
                 UserSystem.changeSceneNew(event, "schedule.fxml", "Schedule");
             }
         });
+
     }
 }
