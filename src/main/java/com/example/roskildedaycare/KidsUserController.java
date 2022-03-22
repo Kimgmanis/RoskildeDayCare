@@ -104,14 +104,14 @@ public class KidsUserController implements Initializable {
         surnameTxt7.setText(UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+6)).getSurname());
         surnameTxt8.setText(UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+7)).getSurname());
 
-        numberTxt1.setText("                     "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue())).getGroup());
-        numberTxt2.setText("                     "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+1)).getGroup());
-        numberTxt3.setText("                     "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+2)).getGroup());
-        numberTxt4.setText("                     "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+3)).getGroup());
-        numberTxt5.setText("                     "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+4)).getGroup());
-        numberTxt6.setText("                     "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+5)).getGroup());
-        numberTxt7.setText("                     "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+6)).getGroup());
-        numberTxt8.setText("                     "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+7)).getGroup());
+        numberTxt1.setText("      "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue())).getGroup());
+        numberTxt2.setText("      "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+1)).getGroup());
+        numberTxt3.setText("      "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+2)).getGroup());
+        numberTxt4.setText("      "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+3)).getGroup());
+        numberTxt5.setText("      "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+4)).getGroup());
+        numberTxt6.setText("      "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+5)).getGroup());
+        numberTxt7.setText("      "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+6)).getGroup());
+        numberTxt8.setText("      "+UserSystem.getKidInfo(Double.toString(upDownScroll.getValue()+7)).getGroup());
 
 
         // scrolls down when scroll bar being triggered
@@ -136,14 +136,14 @@ public class KidsUserController implements Initializable {
                 surnameTxt7.setText(UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+6)).getSurname());
                 surnameTxt8.setText(UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+7)).getSurname());
 
-                numberTxt1.setText("                     "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue())).getGroup());
-                numberTxt2.setText("                     "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+1)).getGroup());
-                numberTxt3.setText("                     "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+2)).getGroup());
-                numberTxt4.setText("                     "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+3)).getGroup());
-                numberTxt5.setText("                     "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+4)).getGroup());
-                numberTxt6.setText("                     "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+5)).getGroup());
-                numberTxt7.setText("                     "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+6)).getGroup());
-                numberTxt8.setText("                     "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+7)).getGroup());
+                numberTxt1.setText("      "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue())).getGroup());
+                numberTxt2.setText("      "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+1)).getGroup());
+                numberTxt3.setText("      "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+2)).getGroup());
+                numberTxt4.setText("      "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+3)).getGroup());
+                numberTxt5.setText("      "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+4)).getGroup());
+                numberTxt6.setText("      "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+5)).getGroup());
+                numberTxt7.setText("      "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+6)).getGroup());
+                numberTxt8.setText("      "+UserSystem.getKidInfo(UserSystem.doubleToString(upDownScroll.getValue()+7)).getGroup());
 
             }
         });
