@@ -15,13 +15,40 @@ public class UserLoggedInController implements Initializable {
     private Label welcomeLbl;
     @FXML
     private Button logoutBtn;
+    @FXML
+    private Button scheduleBtn;
+    @FXML
+    private Button childrenBtn;
+    @FXML
+    private Button parentsBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         logoutBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 UserSystem.changeSceneNew(event, "main.fxml", "Log in");
+            }
+        });
+
+
+        parentsBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.changeSceneNew(event, "parentsUser.fxml", "Parents");
+            }
+        });
+        childrenBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.changeSceneNew(event, "kids.fxml", "Students");
+            }
+        });
+        scheduleBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UserSystem.changeSceneNew(event, "scheduleUser.fxml", "Schedule");
             }
         });
     }

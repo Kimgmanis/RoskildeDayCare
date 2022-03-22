@@ -450,6 +450,7 @@ public class ScheduleController implements Initializable{
         });
     }
 
+    private String group;
     private String teacher;
     private String date;
 
@@ -477,5 +478,4 @@ public class ScheduleController implements Initializable{
         this.group = group;
     }
 
-    private String group;
 }

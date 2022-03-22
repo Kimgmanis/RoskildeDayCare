@@ -23,3 +23,4 @@ public class Main extends Application {
 }
 
 //TODO extra Parents list eror if less than 8 parents are in DB
+//TODO Parents to Update and Kids to Update passing parameters

@@ -238,7 +238,6 @@ import java.util.ResourceBundle;
                     kidBtn7.setText(UserSystem.getKidInfo(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+6)).getKidsID()).getName());
                     kidBtn8.setText(UserSystem.getKidInfo(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue()+7)).getKidsID()).getName());
 
-                    //kidBtn1.setText(UserSystem.getParentInfo(UserSystem.doubleToString(upDownScroll.getValue())).getKidsID());
                 }
             });
         }
