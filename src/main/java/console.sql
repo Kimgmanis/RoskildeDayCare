@@ -12,3 +12,12 @@ WHERE students_id = 1 LIMIT 1,1 ;
 SELECT password, firstName, lastName, admin, telephoneNumber FROM roskilde_daycare.user WHERE ID = 1
 
 SELECT ID FROM roskilde_daycare.parents WHERE students_id = 1 LIMIT 0,1;
+
+create table schedule
+(
+    studentGroup varchar(32) NOT NULL ,
+    dateSchedule date NOT NULL ,
+    teacher varchar(32) NOT NULL ,
+    constraint schedule_pk
+        primary key (studentGroup, dateSchedule)
+);
