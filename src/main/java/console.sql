@@ -21,3 +21,6 @@ create table schedule
     constraint schedule_pk
         primary key (studentGroup, dateSchedule)
 );
+SET foreign_key_checks = 0;
+REPLACE INTO students (ID, firstName, lastName, studentGroup) VALUES (1, 'Klay', 'Spark', 'B');
+SET foreign_key_checks =1;

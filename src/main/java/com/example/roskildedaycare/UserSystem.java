@@ -256,6 +256,49 @@ public class UserSystem {
         return kidID;
     }
 
+    public static void updateParent(String ID, String name, String surname, String number, String kidsID)
+    {
+        try {
+            connection();
+            ps = connect.prepareStatement("SET foreign_key_checks = 0;");
+            ps.executeUpdate();
+            ps = connect.prepareStatement("REPLACE INTO parents (ID, firstName, lastName, telephoneNumber, students_id) VALUES (?, ?, ?, ?,?);");
+            ps.setString(1, ID);
+            ps.setString(2, name);
+            ps.setString(3, surname);
+            ps.setString(4, number);
+            ps.setString(5,kidsID);
+            ps.executeUpdate();
+            ps = connect.prepareStatement("SET foreign_key_checks = 1;");
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+    }
+
+    public static void updateKid(String ID, String name, String surname, String group)
+    {
+        try {
+            connection();
+            ps = connect.prepareStatement("SET foreign_key_checks = 0;");
+            ps.executeUpdate();
+            ps = connect.prepareStatement("REPLACE INTO students (ID, firstName, lastName, studentGroup) VALUES (?, ?, ?, ?);");
+            ps.setString(1, ID);
+            ps.setString(2, name);
+            ps.setString(3, surname);
+            ps.setString(4, group);
+            ps.executeUpdate();
+            ps = connect.prepareStatement("SET foreign_key_checks = 1;");
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+    }
+
     public static String getKidMaxID() {
         String maxID = new String();
         connection();

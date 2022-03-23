@@ -34,6 +34,15 @@ public class ParentInfo {
         this.kidsID = kidsID;
     }
 
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    private String ID;
     private String name;
     private String surname;
     private String number;
