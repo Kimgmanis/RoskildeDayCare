@@ -4,8 +4,6 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -40,10 +38,16 @@
       <Button fx:id="returnBtn" layoutX="487.0" layoutY="342.0" mnemonicParsing="false" text="Back to menu" />
       <Button fx:id="addBtn" layoutX="322.0" layoutY="342.0" mnemonicParsing="false" text="Save famly" />
       <Button fx:id="deleteBtn" layoutX="417.0" layoutY="342.0" mnemonicParsing="false" text="Delete" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="358.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../logo/Logo.png" />
-         </image>
-      </ImageView>
+      <Label layoutX="348.0" layoutY="215.0" prefHeight="28.0" prefWidth="190.0" text="Here could have been" underline="true">
+         <font>
+            <Font name="Bell MT" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="357.0" layoutY="251.0" text="your advertisement!" underline="true">
+         <font>
+            <Font name="Bell MT" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="334.0" layoutY="292.0" text="roskildeDeyCare@sendAdds.com" />
    </children>
 </AnchorPane>
