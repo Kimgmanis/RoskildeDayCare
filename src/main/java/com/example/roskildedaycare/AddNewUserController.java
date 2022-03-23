@@ -51,6 +51,11 @@ public class AddNewUserController implements Initializable {
                 }
             }
         });
+        if (!update) {
+            createuserBtn.setText("Create");
+        } else {
+            createuserBtn.setText("Update");
+        }
     }
 
     public void updateUser(int ID) {

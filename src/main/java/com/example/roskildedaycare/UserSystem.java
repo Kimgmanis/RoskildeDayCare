@@ -361,7 +361,7 @@ public class UserSystem {
         connection();
         UserInfo temporaryUser = new UserInfo();
         try {
-            ps = connect.prepareStatement("SELECT password, firstName, lastName, admin, telephoneNumber FROM roskilde_daycare.user WHERE ID = ?");
+            ps = connect.prepareStatement("SELECT firstName, lastName, telephoneNumber, userName, password, admin FROM roskilde_daycare.user WHERE ID = ?");
             ps.setString(1, inSystemID);
             rs = ps.executeQuery();
             if (!rs.isBeforeFirst()) {
@@ -372,9 +372,10 @@ public class UserSystem {
                 while (rs.next()) {
                     temporaryUser.setFirstName(rs.getString("firstName"));
                     temporaryUser.setLastName(rs.getString("lastName"));
+                    temporaryUser.setTelephoneNumber(rs.getString("telephoneNumber"));
+                    temporaryUser.setUserName(rs.getString("userName"));
                     temporaryUser.setPassword(rs.getString("password"));
                     temporaryUser.setAdmin(rs.getBoolean("admin"));
-                    temporaryUser.setTelephoneNumber(rs.getString("telephoneNumber"));
                 }
             }
         } catch (SQLException e) {

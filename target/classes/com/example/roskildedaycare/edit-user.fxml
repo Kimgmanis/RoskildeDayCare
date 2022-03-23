@@ -12,7 +12,7 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label fx:id="titleLbl" alignment="CENTER" layoutX="1.0" layoutY="14.0" prefHeight="27.0" prefWidth="600.0" text="Edit user">
+            <Label fx:id="titleLbl" alignment="CENTER" layoutX="1.0" layoutY="1.0" prefHeight="27.0" prefWidth="600.0" text="Edit user">
                <font>
                   <Font size="18.0" />
                </font>
@@ -30,6 +30,11 @@
             </TableView>
             <Button fx:id="updateBtn" layoutX="221.0" layoutY="65.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="Update" />
             <Button fx:id="deleteBtn" layoutX="307.0" layoutY="65.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="Delete" />
+            <Label fx:id="titleLbl1" alignment="CENTER" layoutX="1.0" layoutY="28.0" prefHeight="27.0" prefWidth="600.0" text="Please select the following options below:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
