@@ -4,8 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.roskildedaycare.KidsUserController">
    <children>
@@ -37,7 +38,23 @@
             <Label fx:id="numberTxt8" prefHeight="30.0" prefWidth="137.0" text="Label" textAlignment="CENTER" />
          </children>
       </TextFlow>
-      <ScrollBar fx:id="upDownScroll" layoutX="589.0" layoutY="27.0" orientation="VERTICAL" prefHeight="274.0" prefWidth="14.0" />
+      <ScrollBar fx:id="upDownScroll" layoutX="555.0" layoutY="27.0" orientation="VERTICAL" prefHeight="274.0" prefWidth="14.0" />
       <Button fx:id="returnBtn" layoutX="511.0" layoutY="359.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="75.0" text="Return" />
+      <Label layoutX="86.0" layoutY="18.0" text="Name:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="217.0" layoutY="18.0" text="Surname:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="359.0" layoutY="18.0" text="Group:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Line endX="-67.20001220703125" endY="-345.1999816894531" layoutX="252.0" layoutY="373.0" startX="-67.20001220703125" startY="-83.5999755859375" />
+      <Line endX="-67.20001220703125" endY="-345.1999816894531" layoutX="397.0" layoutY="373.0" startX="-67.20001220703125" startY="-83.5999755859375" />
+      <Line endX="-67.20001220703125" endY="-345.1999816894531" layoutX="125.0" layoutY="373.0" startX="-67.20001220703125" startY="-83.39996337890625" />
+      <Line endX="-67.20001220703125" endY="-345.1999816894531" layoutX="496.0" layoutY="374.0" startX="-67.20001220703125" startY="-84.5999755859375" />
    </children>
 </AnchorPane>

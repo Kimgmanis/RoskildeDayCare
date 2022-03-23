@@ -25,6 +25,16 @@
             </Label>
             <Button fx:id="connectBtn" layoutX="263.0" layoutY="259.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="Connect" />
             <PasswordField fx:id="passwordFld" layoutX="279.0" layoutY="209.0" />
+            <Label layoutX="112.0" layoutY="31.0" text="Roskilde Day Care">
+               <font>
+                  <Font name="Bell MT" size="49.0" />
+               </font>
+            </Label>
+            <Label layoutX="183.0" layoutY="98.0" text="We love your children more than priests do!">
+               <font>
+                  <Font name="Berlin Sans FB" size="13.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

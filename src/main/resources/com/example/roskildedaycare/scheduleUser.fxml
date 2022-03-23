@@ -4,8 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.roskildedaycare.ScheduleUserController">
    <children>
@@ -37,7 +38,24 @@
             <Label fx:id="numberTxt8" prefHeight="30.0" prefWidth="137.0" text="Label" textAlignment="CENTER" />
          </children>
       </TextFlow>
-      <ScrollBar fx:id="upDownScroll" layoutX="592.0" layoutY="30.0" orientation="VERTICAL" prefHeight="274.0" prefWidth="14.0" />
+      <ScrollBar fx:id="upDownScroll" layoutX="541.0" layoutY="29.0" orientation="VERTICAL" prefHeight="274.0" prefWidth="14.0" />
       <Button fx:id="returnBtn" layoutX="511.0" layoutY="359.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="75.0" text="Return" />
+      <Line endX="-100.00003051757812" endY="46.0" layoutX="305.0" layoutY="257.0" startX="-100.00003051757812" startY="-226.8000030517578" />
+      <Line endX="-100.00003051757812" endY="46.0" layoutX="445.0" layoutY="257.0" startX="-100.00003051757812" startY="-226.8000030517578" />
+      <Label layoutX="97.0" layoutY="14.0" text="Group:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="244.0" layoutY="14.0" text="Taecher:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="384.0" layoutY="14.0" text="Date:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

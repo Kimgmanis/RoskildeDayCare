@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.roskildedaycare.KidsController">
@@ -47,5 +49,28 @@
       <ScrollBar fx:id="upDownScroll" layoutX="586.0" layoutY="27.0" orientation="VERTICAL" prefHeight="274.0" prefWidth="14.0" />
       <Button fx:id="returnBtn" layoutX="511.0" layoutY="359.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="75.0" text="Return" />
       <Button fx:id="addBtn" layoutX="39.0" layoutY="359.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="80.0" text="Add kid " />
+      <Label layoutX="19.0" layoutY="5.0" text="Name:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="149.0" layoutY="5.0" text="Surname:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="308.0" layoutY="5.0" text="Parent:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="441.0" layoutY="4.0" text="Group:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Line endX="-67.20001220703125" endY="-368.0" layoutX="208.0" layoutY="399.0" startX="-67.20001220703125" startY="-96.5999755859375" />
+      <Line endX="-67.20001220703125" endY="-368.0" layoutX="354.0" layoutY="399.0" startX="-67.20001220703125" startY="-99.79998779296875" />
+      <Line endX="-67.20001220703125" endY="-370.1999816894531" layoutX="508.0" layoutY="399.0" startX="-67.20001220703125" startY="-99.0" />
    </children>
 </AnchorPane>

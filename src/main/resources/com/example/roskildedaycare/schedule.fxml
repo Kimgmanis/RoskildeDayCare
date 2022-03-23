@@ -6,6 +6,8 @@
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.roskildedaycare.ScheduleController">
@@ -18,7 +20,7 @@
       <Label layoutX="115.0" layoutY="329.0" text="Group:" />
       <Label layoutX="185.0" layoutY="329.0" text="Teacher name:" />
       <Label layoutX="348.0" layoutY="329.0" text="Date: 'YYYY-MM-DD'" />
-      <TextFlow fx:id="parentsTxt" layoutX="26.0" layoutY="20.0" prefHeight="276.0" prefWidth="550.0">
+      <TextFlow fx:id="parentsTxt" layoutX="26.0" layoutY="33.0" prefHeight="276.0" prefWidth="550.0">
          <children>
             <Label fx:id="nameTxt1" prefHeight="30.0" prefWidth="137.0" text="Label" />
             <Label fx:id="surnameTxt1" prefHeight="30.0" prefWidth="137.0" text="Label" />
@@ -54,6 +56,24 @@
             <Button fx:id="kidBtn8" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" text="Delete" />
          </children>
       </TextFlow>
-      <ScrollBar fx:id="upDownScroll" layoutX="589.0" layoutY="21.0" orientation="VERTICAL" prefHeight="274.0" prefWidth="14.0" />
+      <ScrollBar fx:id="upDownScroll" layoutX="582.0" layoutY="23.0" orientation="VERTICAL" prefHeight="284.0" prefWidth="14.0" />
+      <Line endX="-100.0" endY="54.20001220703125" layoutX="250.0" layoutY="250.0" startX="-100.00003051757812" startY="-226.8000030517578" />
+      <Line endX="-100.0" endY="45.20001220703125" layoutX="391.0" layoutY="259.0" startX="-100.00003051757812" startY="-235.0" />
+      <Line endX="-100.0" endY="23.20001220703125" layoutX="529.0" layoutY="281.0" startX="-100.00003051757812" startY="-257.0" />
+      <Label layoutX="40.0" layoutY="14.0" text="Group:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="326.0" layoutY="14.0" text="Date:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="191.0" layoutY="14.0" text="Teacher:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
