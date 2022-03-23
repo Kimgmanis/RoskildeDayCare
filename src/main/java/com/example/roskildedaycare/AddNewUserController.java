@@ -40,6 +40,7 @@ public class AddNewUserController implements Initializable {
                 UserSystem.changeSceneNew(event, "user-management.fxml", "User management");
             }
         });
+        createuserBtn.setText("Create");
         createuserBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -51,11 +52,6 @@ public class AddNewUserController implements Initializable {
                 }
             }
         });
-        if (!update) {
-            createuserBtn.setText("Create");
-        } else {
-            createuserBtn.setText("Update");
-        }
     }
 
     public void updateUser(int ID) {
@@ -67,5 +63,6 @@ public class AddNewUserController implements Initializable {
         admincheckbox.setSelected(UserSystem.getUserInfo(Integer.toString(ID)).isAdmin());
         update = true;
         localID = ID;
+        createuserBtn.setText("Update");
     }
 }
