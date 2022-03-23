@@ -2,7 +2,7 @@ package com.example.roskildedaycare;
 
 public class UserInfo {
 
-    public UserInfo(String firstName, String lastName, int telephoneNumber, String username, String password, boolean admin) {
+    public UserInfo(String firstName, String lastName, String telephoneNumber, String username, String password, boolean admin) {
         setFirstName(firstName);
         setLastName(lastName);
         setTelephoneNumber(telephoneNumber);
@@ -22,13 +22,13 @@ public class UserInfo {
     private int ID;
     private String firstName;
     private String lastName;
-    private int telephoneNumber;
+    private String telephoneNumber;
     private String userName;
     private String password;
     private boolean admin;
 
 
-    public UserInfo(String firstName, String lastName, int telephoneNumber, String userName, boolean admin) {
+    public UserInfo(String firstName, String lastName, String telephoneNumber, String userName, boolean admin) {
         setFirstName(firstName);
         setLastName(lastName);
         setTelephoneNumber(telephoneNumber);
@@ -36,7 +36,7 @@ public class UserInfo {
         setAdmin(admin);
     }
 
-    public UserInfo(int ID, String firstName, String lastName, int telephoneNumber, String userName, boolean admin) {
+    public UserInfo(int ID, String firstName, String lastName, String telephoneNumber, String userName, boolean admin) {
         setID(ID);
         setFirstName(firstName);
         setLastName(lastName);
@@ -66,11 +66,11 @@ public class UserInfo {
         this.lastName = lastName;
     }
 
-    public int getTelephoneNumber() {
+    public String getTelephoneNumber() {
         return telephoneNumber;
     }
 
-    public void setTelephoneNumber(int telephoneNumber) {
+    public void setTelephoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
     }
 

@@ -22,8 +22,6 @@ public class editUserController implements Initializable {
     @FXML
     private Button returnBtn;
     @FXML
-    private Button searchBtn;
-    @FXML
     private Button updateBtn;
     @FXML
     private Button deleteBtn;
