@@ -32,6 +32,8 @@ public class UserLoggedInController implements Initializable {
             }
         });
 
+        UserInfo temporary = UserSystem.getUserInfo(UserInfo.usingSystemID);
+        welcomeLbl.setText("Welcome Admin: " + temporary.getFirstName() + " " + temporary.getLastName() + "!");
 
         parentsBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -53,7 +55,4 @@ public class UserLoggedInController implements Initializable {
         });
     }
 
-    public void setUserInformation(String lastName, String firstName) {
-        welcomeLbl.setText("Welcome User: " + lastName + " " + firstName + "! to the Database");
-    }
 }

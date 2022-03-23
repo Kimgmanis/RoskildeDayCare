@@ -441,7 +441,7 @@ public class UserSystem {
             ps.setString(4, userName);
             ps.setString(5, password);
             ps.setBoolean(6, admin);
-            if (firstName + lastName + telephoneNumber + userName + password != null) {
+            if (firstName + lastName + telephoneNumber + userName + password != null && !(firstName + lastName + telephoneNumber + userName + password).equals(" ")) {
                 ps.executeUpdate();
                 System.out.println("");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "User created successfully");
