@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -21,8 +18,6 @@ public class editUserController implements Initializable {
     // Buttons
     @FXML
     private Button returnBtn;
-    @FXML
-    private Button searchBtn;
     @FXML
     private Button updateBtn;
     @FXML
@@ -56,16 +51,26 @@ public class editUserController implements Initializable {
         updateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserInfo u = table.getSelectionModel().getSelectedItem();
-                UserSystem.updateUserScene(event, "Update user", u.getID());
+                try {
+                    UserInfo u = table.getSelectionModel().getSelectedItem();
+                    UserSystem.updateUserScene(event, "Update user", u.getID());
+                } catch (NullPointerException e) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Please select a user to update");
+                    alert.show();
+                }
             }
         });
         deleteBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                UserInfo u = table.getSelectionModel().getSelectedItem();
-                table.getItems().remove(u);
-                UserSystem.deleteUser(u.getID());
+                try {
+                    UserInfo u = table.getSelectionModel().getSelectedItem();
+                    table.getItems().remove(u);
+                    UserSystem.deleteUser(u.getID());
+                } catch (NullPointerException e) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Please select a user to delete");
+                    alert.show();
+                }
             }
         });
     }

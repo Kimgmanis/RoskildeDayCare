@@ -40,12 +40,13 @@ public class AddNewUserController implements Initializable {
                 UserSystem.changeSceneNew(event, "user-management.fxml", "User management");
             }
         });
+        createuserBtn.setText("Create");
         createuserBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(false){
+                if(update == false){
                     UserSystem.addNewUser(firstnameTxtFld.getText(), lastnameTxtFld.getText(), telephoneTxtFld.getText(), usernameTxtFld.getText(), passwordFld.getText(), admincheckbox.isSelected());
-                } else if(update = true) {
+                } else if(update == true) {
                     UserSystem.updateUser(localID , firstnameTxtFld.getText(), lastnameTxtFld.getText(), telephoneTxtFld.getText(), usernameTxtFld.getText(), passwordFld.getText(), admincheckbox.isSelected());
                     update = false;
                 }
@@ -56,11 +57,12 @@ public class AddNewUserController implements Initializable {
     public void updateUser(int ID) {
         firstnameTxtFld.setText(UserSystem.getUserInfo(Integer.toString(ID)).getFirstName());
         lastnameTxtFld.setText(UserSystem.getUserInfo(Integer.toString(ID)).getLastName());
-        telephoneTxtFld.setText(Integer.toString(UserSystem.getUserInfo(Integer.toString(ID)).getTelephoneNumber()));
+        telephoneTxtFld.setText(UserSystem.getUserInfo(Integer.toString(ID)).getTelephoneNumber());
         usernameTxtFld.setText(UserSystem.getUserInfo(Integer.toString(ID)).getUserName());
         passwordFld.setText(UserSystem.getUserInfo(Integer.toString(ID)).getPassword());
         admincheckbox.setSelected(UserSystem.getUserInfo(Integer.toString(ID)).isAdmin());
         update = true;
         localID = ID;
+        createuserBtn.setText("Update");
     }
 }

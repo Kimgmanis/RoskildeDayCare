@@ -361,7 +361,7 @@ public class UserSystem {
         connection();
         UserInfo temporaryUser = new UserInfo();
         try {
-            ps = connect.prepareStatement("SELECT password, firstName, lastName, admin, telephoneNumber FROM roskilde_daycare.user WHERE ID = ?");
+            ps = connect.prepareStatement("SELECT firstName, lastName, telephoneNumber, userName, password, admin FROM roskilde_daycare.user WHERE ID = ?");
             ps.setString(1, inSystemID);
             rs = ps.executeQuery();
             if (!rs.isBeforeFirst()) {
@@ -372,9 +372,10 @@ public class UserSystem {
                 while (rs.next()) {
                     temporaryUser.setFirstName(rs.getString("firstName"));
                     temporaryUser.setLastName(rs.getString("lastName"));
+                    temporaryUser.setTelephoneNumber(rs.getString("telephoneNumber"));
+                    temporaryUser.setUserName(rs.getString("userName"));
                     temporaryUser.setPassword(rs.getString("password"));
                     temporaryUser.setAdmin(rs.getBoolean("admin"));
-                    temporaryUser.setTelephoneNumber(rs.getInt("telephoneNumber"));
                 }
             }
         } catch (SQLException e) {
@@ -405,14 +406,11 @@ public class UserSystem {
                 alert.show();
             } else {
                 while (rs.next()) {
-                    String retrievedFirstName = rs.getString("firstName");
-                    String retrievedLastName = rs.getString("lastName");
                     String retrievedPassword = rs.getString("password");
                     boolean retrievedAdmin = rs.getBoolean("admin");
                     UserInfo.setUsingSystemID(rs.getString("ID"));
 
                     if (retrievedPassword.equals(password) && retrievedAdmin) {
-                        //adminChangeScene(event, "admin-logged-in.fxml", "Welcome!", retrievedLastName, retrievedFirstName);
                         changeSceneNew(event, "admin-logged-in.fxml", "Admin menu");
                     } else if (retrievedPassword.equals(password)) {
                         changeSceneNew(event, "user-logged-in.fxml", "Welcome!");
@@ -441,14 +439,13 @@ public class UserSystem {
             ps.setString(4, userName);
             ps.setString(5, password);
             ps.setBoolean(6, admin);
-            if (firstName + lastName + telephoneNumber + userName + password != null && !(firstName + lastName + telephoneNumber + userName + password).equals(" ")) {
+            if (!firstName.isEmpty() && !lastName.isEmpty() && !telephoneNumber.isEmpty() && !userName.isEmpty() && !password.isEmpty()) {
                 ps.executeUpdate();
                 System.out.println("");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "User created successfully");
                 alert.show();
             } else {
-                System.out.println("Please fill in all the information. Thank you");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill in all the information. Thank you");
                 alert.show();
             }
         } catch (SQLException e) {
@@ -470,14 +467,13 @@ public class UserSystem {
             ps.setString(5, userName);
             ps.setString(6, password);
             ps.setBoolean(7, admin);
-            if (firstName + lastName + telephoneNumber + userName + password != null) {
+            if (!firstName.isEmpty() && !lastName.isEmpty() && !telephoneNumber.isEmpty() && !userName.isEmpty() && !password.isEmpty()) {
                 ps.executeUpdate();
                 System.out.println("");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "User created successfully");
                 alert.show();
             } else {
-                System.out.println("Please fill in all the information. Thank you");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill in all the information. Thank you");
                 alert.show();
             }
         } catch (SQLException e) {
@@ -497,7 +493,7 @@ public class UserSystem {
             rs = ps.executeQuery();
             while (rs.next()) {
                 // creates userinfo object, adds the data to the list
-                UserInfo userInfo = new UserInfo(rs.getString("firstName"), rs.getString("lastName"), rs.getInt("telephoneNumber"), rs.getString("userName"), rs.getBoolean("admin"));
+                UserInfo userInfo = new UserInfo(rs.getString("firstName"), rs.getString("lastName"), rs.getString("telephoneNumber"), rs.getString("userName"), rs.getBoolean("admin"));
                 userList.add(userInfo);
             }
         } catch (SQLException e) {
@@ -516,7 +512,7 @@ public class UserSystem {
             rs = ps.executeQuery();
             while (rs.next()) {
                 // creates userinfo object, adds the data to the list
-                UserInfo userInfo = new UserInfo(rs.getInt("ID"), rs.getString("firstName"), rs.getString("lastName"), rs.getInt("telephoneNumber"), rs.getString("userName"), rs.getBoolean("admin"));
+                UserInfo userInfo = new UserInfo(rs.getInt("ID"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("telephoneNumber"), rs.getString("userName"), rs.getBoolean("admin"));
                 userList.add(userInfo);
             }
         } catch (SQLException e) {
@@ -535,7 +531,7 @@ public class UserSystem {
             rs = ps.executeQuery();
             while (rs.next()) {
                 // creates userinfo object, adds the data to the list
-                UserInfo userInfo = new UserInfo(rs.getString("firstName"), rs.getString("lastName"), rs.getInt("telephoneNumber"), rs.getString("userName"), rs.getBoolean("admin"));
+                UserInfo userInfo = new UserInfo(rs.getString("firstName"), rs.getString("lastName"), rs.getString("telephoneNumber"), rs.getString("userName"), rs.getBoolean("admin"));
                 userList.add(userInfo);
             }
         } catch (SQLException e) {
@@ -580,13 +576,6 @@ public class UserSystem {
                 e.printStackTrace();
             }
         }
-        /*if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }*/
         if (psInsert != null) {
             try {
                 psInsert.close();

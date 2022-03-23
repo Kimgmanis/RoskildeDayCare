@@ -4,17 +4,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.roskildedaycare.editUserController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label fx:id="titleLbl" alignment="CENTER" layoutX="1.0" layoutY="14.0" prefHeight="27.0" prefWidth="600.0" text="Edit user">
+            <Label fx:id="titleLbl" alignment="CENTER" layoutX="1.0" layoutY="1.0" prefHeight="27.0" prefWidth="600.0" text="Edit user">
                <font>
                   <Font size="18.0" />
                </font>
@@ -30,11 +28,13 @@
                   <TableColumn fx:id="admin" minWidth="1.0" prefWidth="83.0" text="Admin" />
               </columns>
             </TableView>
-            <TextField fx:id="searchTxtFld" layoutX="73.0" layoutY="67.0" />
-            <Text layoutX="73.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for employee" wrappingWidth="149.0" />
-            <Button fx:id="searchBtn" layoutX="232.0" layoutY="66.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="Search" />
-            <Button fx:id="updateBtn" layoutX="321.0" layoutY="66.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="Update" />
-            <Button fx:id="deleteBtn" layoutX="407.0" layoutY="66.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="Delete" />
+            <Button fx:id="updateBtn" layoutX="221.0" layoutY="65.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="Update" />
+            <Button fx:id="deleteBtn" layoutX="307.0" layoutY="65.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="Delete" />
+            <Label fx:id="titleLbl1" alignment="CENTER" layoutX="1.0" layoutY="28.0" prefHeight="27.0" prefWidth="600.0" text="Please select the following options below:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
